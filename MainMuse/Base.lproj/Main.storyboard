@@ -1,22 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MainMuse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleAspectFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vyM-ug-tzH" userLabel="Login View" customClass="FBLoginView">
+                                <rect key="frame" x="42" y="250" width="300" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="cSg-48-ZI0"/>
+                                    <constraint firstAttribute="width" constant="300" id="ePV-Dg-0Kx"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cSg-48-ZI0"/>
+                                        <exclude reference="ePV-Dg-0Kx"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="cSg-48-ZI0"/>
+                                        <include reference="ePV-Dg-0Kx"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bP3-i5-KZF">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bP3-i5-KZF" firstAttribute="centerX" secondItem="vyM-ug-tzH" secondAttribute="centerX" id="0H7-pM-o8z"/>
+                            <constraint firstAttribute="centerX" secondItem="vyM-ug-tzH" secondAttribute="centerX" id="FwK-Uh-5lU"/>
+                            <constraint firstItem="vyM-ug-tzH" firstAttribute="top" secondItem="bP3-i5-KZF" secondAttribute="bottom" constant="84" id="P6B-Lf-oZc"/>
+                            <constraint firstAttribute="centerY" secondItem="vyM-ug-tzH" secondAttribute="centerY" id="ZK6-aL-Ku9"/>
+                            <constraint firstItem="bP3-i5-KZF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="64" id="aJ0-u3-IiY"/>
+                            <constraint firstItem="bP3-i5-KZF" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="130" id="iz4-XH-z44"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bP3-i5-KZF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0H7-pM-o8z"/>
+                                <exclude reference="aJ0-u3-IiY"/>
+                                <exclude reference="iz4-XH-z44"/>
+                                <exclude reference="FwK-Uh-5lU"/>
+                                <exclude reference="P6B-Lf-oZc"/>
+                                <exclude reference="ZK6-aL-Ku9"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="bP3-i5-KZF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0H7-pM-o8z"/>
+                                <include reference="aJ0-u3-IiY"/>
+                                <include reference="iz4-XH-z44"/>
+                                <include reference="FwK-Uh-5lU"/>
+                                <include reference="P6B-Lf-oZc"/>
+                                <include reference="ZK6-aL-Ku9"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="800"/>
+                    <connections>
+                        <outlet property="fbLoginView" destination="vyM-ug-tzH" id="Ya3-M9-hhe"/>
+                        <outlet property="textView" destination="bP3-i5-KZF" id="k0U-hl-u0L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
