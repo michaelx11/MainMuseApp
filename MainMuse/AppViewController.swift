@@ -10,6 +10,9 @@ import UIKit
 
 class AppViewController: UIViewController {
 
+    @IBOutlet var friendsTableView : UITableView!;
+    var tableData : [String] = ["Michael Xu", "Minerva Zhou"];
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +25,54 @@ class AppViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section:    Int) -> Int {
+        return tableData.count
+    }
+    
+    var firstView = true;
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
+//        let cell: UITableViewCell = FriendsTableViewCell();
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as UITableViewCell;
+        
+        let readButton : UIButton = cell.contentView.viewWithTag(2) as UIButton;
+        
+        if (indexPath.row % 2 == 0) {
+            readButton.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal);
+        } else {
+            readButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal);
+        }
+        if (indexPath.row >= tableData.count) {
+            return cell;
+        }
+        cell.textLabel?.text = tableData[indexPath.row] as String
+        /*
+        cell.textLabel?.text = "Row #\(indexPath.row)"
+        cell.detailTextLabel?.text = "Subtitle #\(indexPath.row)"
+
+        var buttonView = UIButton();
+        buttonView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right;
+        buttonView.frame = CGRect(x: 300, y: 0, width: 50, height: 50);
+//        var horizontalConstraint = NSLayoutConstraint(item: <#AnyObject#>, attribute: <#NSLayoutAttribute#>, relatedBy: <#NSLayoutRelation#>, toItem: <#AnyObject?#>, attribute: <#NSLayoutAttribute#>, multiplier: <#CGFloat#>, constant: <#CGFloat#>)
+//        buttonView.addConstraint(NSLayoutConstraint.)
+        buttonView.setTitle("Read!", forState : UIControlState.Normal);
+        buttonView.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal);
+        cell.addSubview(buttonView);
+        */
+        
+        if (firstView) {
+            var yOffset : CGFloat = 0;
+            
+            if (tableView.contentSize.height > tableView.bounds.size.height) {
+                yOffset = tableView.contentSize.height - tableView.bounds.size.height;
+            }
+            var bottom: CGPoint = CGPoint(x: 0, y: yOffset)
+            tableView.setContentOffset(bottom, animated: false)
+            firstView = false
+        }
+        
+        return cell
+    }
 
     /*
     // MARK: - Navigation
