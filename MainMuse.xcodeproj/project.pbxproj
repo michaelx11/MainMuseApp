@@ -16,6 +16,8 @@
 		F4D9B45F1A58C84700F28DEB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D9B45E1A58C84700F28DEB /* FacebookSDK.framework */; };
 		F4D9B4681A5A136C00F28DEB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4671A5A136C00F28DEB /* LoginViewController.swift */; };
 		F4D9B46A1A5A137700F28DEB /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4691A5A137700F28DEB /* AppViewController.swift */; };
+		F4D9B46C1A5A36E200F28DEB /* MessageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B46B1A5A36E200F28DEB /* MessageListController.swift */; };
+		F4D9B46E1A5A3DD600F28DEB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B46D1A5A3DD600F28DEB /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		F4D9B4601A58C87000F28DEB /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F4D9B4671A5A136C00F28DEB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F4D9B4691A5A137700F28DEB /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		F4D9B46B1A5A36E200F28DEB /* MessageListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListController.swift; sourceTree = "<group>"; };
+		F4D9B46D1A5A3DD600F28DEB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				F4D9B4401A58C81900F28DEB /* ViewController.swift */,
 				F4D9B4671A5A136C00F28DEB /* LoginViewController.swift */,
 				F4D9B4691A5A137700F28DEB /* AppViewController.swift */,
+				F4D9B46B1A5A36E200F28DEB /* MessageListController.swift */,
+				F4D9B46D1A5A3DD600F28DEB /* ProfileViewController.swift */,
 				F4D9B4421A58C81900F28DEB /* Main.storyboard */,
 				F4D9B4451A58C81900F28DEB /* Images.xcassets */,
 				F4D9B4471A58C81900F28DEB /* LaunchScreen.xib */,
@@ -224,6 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D9B46E1A5A3DD600F28DEB /* ProfileViewController.swift in Sources */,
+				F4D9B46C1A5A36E200F28DEB /* MessageListController.swift in Sources */,
 				F4D9B4681A5A136C00F28DEB /* LoginViewController.swift in Sources */,
 				F4D9B4411A58C81900F28DEB /* ViewController.swift in Sources */,
 				F4D9B46A1A5A137700F28DEB /* AppViewController.swift in Sources */,

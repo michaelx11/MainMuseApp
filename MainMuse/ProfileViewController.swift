@@ -8,18 +8,11 @@
 
 import UIKit
 
-/*
-protocol LoginViewControllerDelegate {
-    func myVCDidFinish(controller:LoginViewController,text:String)
-}
-*/
-
-class LoginViewController: UIViewController, FBLoginViewDelegate {
+class ProfileViewController: UIViewController, FBLoginViewDelegate {
     
-
     
-    @IBOutlet var fbLoginView : FBLoginView!;
-    @IBOutlet var textView : UITextView!;
+    
+    @IBOutlet var fbLogoutView : FBLoginView!;
     
     
     override func viewDidLoad() {
@@ -27,8 +20,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         println("DID LOAD");
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.fbLoginView.delegate = self;
-        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"];
+        self.fbLogoutView.delegate = self;
+        self.fbLogoutView.readPermissions = ["public_profile", "email", "user_friends"];
     }
     
     // Facebook Delegate Methods
@@ -43,14 +36,11 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         println("User Name: \(user.name)");
         var userEmail = user.objectForKey("email") as String;
         println("User Email: \(userEmail)");
-//        self.textView.text = "User Name: \(user.name)";
-        
-        performSegueWithIdentifier("loggedInSegue", sender: self)
-        println("segueeee");
     }
     
     func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
         println("User Logged Out");
+        performSegueWithIdentifier("loggedOutSegue", sender: self)
     }
     
     func loginView(loginView: FBLoginView!, handleError: NSError) {
