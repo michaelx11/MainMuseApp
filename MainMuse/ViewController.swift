@@ -8,41 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController, FBLoginViewDelegate {
-    
-    @IBOutlet var fbLoginView : FBLoginView!;
-    @IBOutlet var textView : UITextView!;
+class ViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.fbLoginView.delegate = self;
-        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"];
+
+        println("DELEGATED");
     }
-    
-    // Facebook Delegate Methods
-    
-    func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
-        println("User Logged In");
+   
+    /*
+    func myVCDidFinish(controller: LoginViewController, text: String) {
+        controller.navigationController?.popViewControllerAnimated(false);
+        println("Navigated");
     }
+    */
     
-    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
-        println("User: \(user)");
-        println("User ID: \(user.objectID)");
-        println("User Name: \(user.name)");
-        var userEmail = user.objectForKey("email") as String;
-        println("User Email: \(userEmail)");
-        self.textView.text = "User Name: \(user.name)";
-    }
-    
-    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
-        println("User Logged Out");
-    }
-    
-    func loginView(loginView: FBLoginView!, handleError: NSError) {
-        println("Error: \(handleError.localizedDescription)");
-    }
     
 
     override func didReceiveMemoryWarning() {
