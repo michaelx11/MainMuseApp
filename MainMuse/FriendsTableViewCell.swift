@@ -10,6 +10,11 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
+    var friendName : NSString!;
+    var friendId : NSString!;
+    var myId : NSString!;
+    var myToken : NSString!;
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

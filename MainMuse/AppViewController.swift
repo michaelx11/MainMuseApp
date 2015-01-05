@@ -11,6 +11,7 @@ import UIKit
 class AppViewController: UIViewController {
 
     @IBOutlet var friendsTableView : UITableView!;
+    
     var tableData : [String] = ["Michael Xu", "Minerva Zhou"];
     
     override func viewDidLoad() {
@@ -33,9 +34,9 @@ class AppViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
 //        let cell: UITableViewCell = FriendsTableViewCell();
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as UITableViewCell;
+        let cell: FriendsTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as FriendsTableViewCell;
         
-        let readButton : UIButton = cell.contentView.viewWithTag(2) as UIButton;
+        let readButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
         
         if (indexPath.row % 2 == 0) {
             readButton.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal);
@@ -45,7 +46,8 @@ class AppViewController: UIViewController {
         if (indexPath.row >= tableData.count) {
             return cell;
         }
-        cell.textLabel?.text = tableData[indexPath.row] as String
+        cell.textLabel?.text = tableData[indexPath.row] as String;
+        readButton.friendName = tableData[indexPath.row] as String;
         /*
         cell.textLabel?.text = "Row #\(indexPath.row)"
         cell.detailTextLabel?.text = "Subtitle #\(indexPath.row)"
@@ -74,14 +76,25 @@ class AppViewController: UIViewController {
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let uiButton : FriendButton = sender as FriendButton;
+        println("Trying to segue");
+        if (segue.identifier == "readSegue") {
+            println("SEGUEEEEE");
+            println(uiButton.friendName);
+            let readerViewController : ReaderViewController = segue.destinationViewController as ReaderViewController;
+            readerViewController.friendId = uiButton.friendId;
+            readerViewController.friendName = uiButton.friendName;
+            readerViewController.myToken = uiButton.myToken;
+            readerViewController.myId = uiButton.myId;
+        }
     }
-    */
+    
 
 }
