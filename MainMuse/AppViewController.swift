@@ -11,6 +11,7 @@ import UIKit
 class AppViewController: UIViewController {
 
     @IBOutlet var friendsTableView : UITableView!;
+    @IBOutlet var addFriendButton : UIButton!;
     
     var tableData : [String] = ["Michael Xu", "Minerva Zhou"];
     
@@ -83,16 +84,23 @@ class AppViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let uiButton : FriendButton = sender as FriendButton;
-        println("Trying to segue");
-        if (segue.identifier == "readSegue") {
-            println("SEGUEEEEE");
-            println(uiButton.friendName);
-            let readerViewController : ReaderViewController = segue.destinationViewController as ReaderViewController;
-            readerViewController.friendId = uiButton.friendId;
-            readerViewController.friendName = uiButton.friendName;
-            readerViewController.myToken = uiButton.myToken;
-            readerViewController.myId = uiButton.myId;
+        if (sender is FriendButton) {
+            let uiButton : FriendButton = sender as FriendButton;
+            if (segue.identifier == "readSegue") {
+                let readerViewController : ReaderViewController = segue.destinationViewController as ReaderViewController;
+                readerViewController.friendId = uiButton.friendId;
+                readerViewController.friendName = uiButton.friendName;
+                readerViewController.myToken = uiButton.myToken;
+                readerViewController.myId = uiButton.myId;
+            }
+            
+            if (segue.identifier == "writeSegue") {
+                let messageListController : MessageListController = segue.destinationViewController as MessageListController;
+                messageListController.friendId = uiButton.friendId;
+                messageListController.friendName = uiButton.friendName;
+                messageListController.myToken = uiButton.myToken;
+                messageListController.myId = uiButton.myId;
+            }
         }
     }
     
