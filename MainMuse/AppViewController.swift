@@ -87,7 +87,8 @@ class AppViewController: UIViewController {
         if (sender is FriendButton) {
             let uiButton : FriendButton = sender as FriendButton;
             if (segue.identifier == "readSegue") {
-                let readerViewController : ReaderViewController = segue.destinationViewController as ReaderViewController;
+                let navController : UINavigationController = segue.destinationViewController as UINavigationController;
+                let readerViewController : ReaderViewController = navController.topViewController as ReaderViewController;
                 readerViewController.friendId = uiButton.friendId;
                 readerViewController.friendName = uiButton.friendName;
                 readerViewController.myToken = uiButton.myToken;
@@ -95,7 +96,8 @@ class AppViewController: UIViewController {
             }
             
             if (segue.identifier == "writeSegue") {
-                let messageListController : MessageListController = segue.destinationViewController as MessageListController;
+                let navController : UINavigationController = segue.destinationViewController as UINavigationController;
+                let messageListController : MessageListController = navController.topViewController as MessageListController;
                 messageListController.friendId = uiButton.friendId;
                 messageListController.friendName = uiButton.friendName;
                 messageListController.myToken = uiButton.myToken;
