@@ -267,10 +267,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Friends" id="iwL-WG-w9n">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="v0d-xa-JRl"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dty-In-eNM" customClass="FriendNavButton" customModule="MainMuse" customModuleProvider="target">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CVm-rX-Y7E">
                             <connections>
-                                <segue destination="lYc-IR-cXv" kind="show" id="rKN-Wk-551"/>
+                                <segue destination="lYc-IR-cXv" kind="show" id="FUd-9j-0MJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -512,6 +511,15 @@
                                     <navigationItem title="Profile" id="eUm-Fi-pVk"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsd-56-IGG">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="179" y="106" width="42" height="21"/>
+                                </variation>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06B-zc-Dfn" customClass="FBLoginView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -530,6 +538,7 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="OoS-yw-UdY"/>
+                                <exclude reference="Zsd-56-IGG"/>
                                 <exclude reference="06B-zc-Dfn"/>
                             </mask>
                             <mask key="constraints">
@@ -545,6 +554,7 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="OoS-yw-UdY"/>
+                                <include reference="Zsd-56-IGG"/>
                                 <include reference="06B-zc-Dfn"/>
                             </mask>
                             <mask key="constraints">
@@ -986,6 +996,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Save Friend" id="d12-cr-uae"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="myCodeLabel" destination="IMt-KB-RKd" id="VEx-vm-8Sn"/>
                         <outlet property="resultTextView" destination="uwb-Zo-CYq" id="M4o-2B-AUj"/>
                         <outlet property="textField" destination="36P-Ay-LjO" id="dCi-Qs-pGS"/>
                     </connections>
@@ -1022,6 +1033,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="efq-qL-O46">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Os8-VJ-18S" kind="relationship" relationship="rootViewController" id="BjB-RE-KN8"/>
                     </connections>
@@ -1040,6 +1054,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hnS-gK-YaG">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="nxM-bx-c62" kind="relationship" relationship="rootViewController" id="36G-9N-ZUM"/>
                     </connections>
@@ -1058,6 +1075,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="woZ-il-Rj4">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="yUI-vf-euk" kind="relationship" relationship="rootViewController" id="bAn-FY-e7D"/>
                     </connections>

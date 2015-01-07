@@ -11,7 +11,6 @@ import UIKit
 class AppViewController: UIViewController {
 
     @IBOutlet var friendsTableView : UITableView!;
-    @IBOutlet var addFriendButton : UIButton!;
     
     var tableData : [String] = ["Michael Xu", "Minerva Zhou"];
     

@@ -20,6 +20,7 @@ class AddFriendViewController: UIViewController {
         // Do any additional setup after loading the view.
         var tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard");
         self.view.addGestureRecognizer(tapRecognizer);
+        myCodeLabel.text = myCodeLabel.text! + " " + localData.localFriendCode;
     }
 
     override func didReceiveMemoryWarning() {

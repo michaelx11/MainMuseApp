@@ -8,12 +8,6 @@
 
 import UIKit
 
-/*
-protocol LoginViewControllerDelegate {
-    func myVCDidFinish(controller:LoginViewController,text:String)
-}
-*/
-
 class LoginViewController: UIViewController, FBLoginViewDelegate {
     
 
@@ -21,6 +15,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     @IBOutlet var fbLoginView : FBLoginView!;
     @IBOutlet var textView : UITextView!;
     
+    var fetchedUserInfo = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,22 +30,32 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     
     func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
         println("User Logged In");
+
     }
     
     func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
+
         println("User: \(user)");
         println("User ID: \(user.objectID)");
         println("User Name: \(user.name)");
         var userEmail = user.objectForKey("email") as String;
         println("User Email: \(userEmail)");
-//        self.textView.text = "User Name: \(user.name)";
+
+        localData.accessToken = FBSession.activeSession().accessTokenData.accessToken;
+        localData.localId = user.objectID;
+        localData.fullName = user.name;
+        localData.localEmail = userEmail;
         
-        performSegueWithIdentifier("loggedInSegue", sender: self)
-        println("segueeee");
+        if (!fetchedUserInfo) {
+            verifyUserAndSegue(localData.localId, accessToken: localData.accessToken);
+            fetchedUserInfo = true;
+        }
     }
     
     func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
         println("User Logged Out");
+        localData = AppLocalData();
+        fetchedUserInfo = false;
     }
     
     func loginView(loginView: FBLoginView!, handleError: NSError) {
@@ -63,6 +68,42 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func verifyUserAndSegue(id: NSString, accessToken: NSString) {
+        if (localData.verified) {
+            return;
+        }
+        
+        let urlPath = "http://view.ninja:9988/verifyuser?id=" + id + "&token=" + accessToken;
+        let url = NSURL(string: urlPath)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
+            println("Task completed")
+            if(error != nil) {
+                // If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+                return;
+            }
+            var err: NSError?
+            
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            if(err != nil) {
+                // If there is an error parsing JSON, print it to the console
+                println("JSON Error \(err!.localizedDescription)")
+            }
+            println(jsonResult);
+            
+            if (jsonResult["success"] != nil) {
+                self.performSegueWithIdentifier("loggedInSegue", sender: self);
+                localData.localFriendCode = "hwlejoaef";
+                localData.verified = true;
+            } else {
+                println(jsonResult["error"]);
+            }
+
+        })
+        
+        task.resume()
+    }
     
 }
 

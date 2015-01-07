@@ -8,6 +8,8 @@
 
 import UIKit
 
+var localData: AppLocalData = AppLocalData();
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
