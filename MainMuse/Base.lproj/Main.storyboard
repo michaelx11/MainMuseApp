@@ -198,13 +198,13 @@
                                                     <exclude reference="smY-Rb-8Fc"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="1NV-5k-Vck"/>
-                                                    <exclude reference="DuH-DM-Cfy"/>
-                                                    <exclude reference="dTq-Lb-tyR"/>
                                                     <exclude reference="69P-rQ-YuV"/>
                                                     <exclude reference="Jgd-xu-tb0"/>
                                                     <exclude reference="nel-YS-dME"/>
                                                     <exclude reference="um1-Oc-J1l"/>
+                                                    <exclude reference="1NV-5k-Vck"/>
+                                                    <exclude reference="DuH-DM-Cfy"/>
+                                                    <exclude reference="dTq-Lb-tyR"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -213,13 +213,13 @@
                                                     <include reference="smY-Rb-8Fc"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="1NV-5k-Vck"/>
-                                                    <include reference="DuH-DM-Cfy"/>
-                                                    <include reference="dTq-Lb-tyR"/>
                                                     <include reference="69P-rQ-YuV"/>
                                                     <include reference="Jgd-xu-tb0"/>
                                                     <include reference="nel-YS-dME"/>
                                                     <include reference="um1-Oc-J1l"/>
+                                                    <include reference="1NV-5k-Vck"/>
+                                                    <include reference="DuH-DM-Cfy"/>
+                                                    <include reference="dTq-Lb-tyR"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
