@@ -141,7 +141,7 @@
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6V-Om-JeB" customClass="FriendButton" customModule="MainMuse" customModuleProvider="target">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="54" id="GtS-eO-NEl"/>
+                                                        <constraint firstAttribute="width" constant="54" id="820-eV-ewu"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="READ">
@@ -149,12 +149,12 @@
                                                     </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="GtS-eO-NEl"/>
+                                                            <exclude reference="820-eV-ewu"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="GtS-eO-NEl"/>
+                                                            <include reference="820-eV-ewu"/>
                                                         </mask>
                                                     </variation>
                                                     <connections>
@@ -164,18 +164,18 @@
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smY-Rb-8Fc" customClass="FriendButton" customModule="MainMuse" customModuleProvider="target">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="67" id="cyz-u0-k2S"/>
+                                                        <constraint firstAttribute="width" constant="67" id="PBF-DR-nhj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="WRITE"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="cyz-u0-k2S"/>
+                                                            <exclude reference="PBF-DR-nhj"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="cyz-u0-k2S"/>
+                                                            <include reference="PBF-DR-nhj"/>
                                                         </mask>
                                                     </variation>
                                                     <connections>
@@ -184,13 +184,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="top" secondItem="smY-Rb-8Fc" secondAttribute="top" id="4zE-vh-RkY"/>
-                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="firstBaseline" secondItem="smY-Rb-8Fc" secondAttribute="baseline" id="ELq-OP-MfK"/>
-                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="top" secondItem="Rgb-Q8-CKp" secondAttribute="top" id="HV1-H7-lq6"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="K6V-Om-JeB" secondAttribute="bottom" constant="-9" id="a82-OX-lxv"/>
-                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="leading" secondItem="smY-Rb-8Fc" secondAttribute="trailing" constant="8" symbolic="YES" id="kd5-Y6-Aau"/>
-                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="baseline" secondItem="smY-Rb-8Fc" secondAttribute="firstBaseline" id="x3S-hr-FNt"/>
-                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="trailing" secondItem="Rgb-Q8-CKp" secondAttribute="trailingMargin" id="yrG-Gw-vI2"/>
+                                                <constraint firstItem="smY-Rb-8Fc" firstAttribute="firstBaseline" secondItem="K6V-Om-JeB" secondAttribute="baseline" id="1NV-5k-Vck"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="K6V-Om-JeB" secondAttribute="bottom" constant="-9" id="69P-rQ-YuV"/>
+                                                <constraint firstItem="smY-Rb-8Fc" firstAttribute="top" secondItem="K6V-Om-JeB" secondAttribute="top" id="DuH-DM-Cfy"/>
+                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="leading" secondItem="smY-Rb-8Fc" secondAttribute="trailing" constant="8" symbolic="YES" id="Jgd-xu-tb0"/>
+                                                <constraint firstItem="smY-Rb-8Fc" firstAttribute="baseline" secondItem="K6V-Om-JeB" secondAttribute="firstBaseline" id="dTq-Lb-tyR"/>
+                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="top" secondItem="Rgb-Q8-CKp" secondAttribute="top" id="nel-YS-dME"/>
+                                                <constraint firstItem="K6V-Om-JeB" firstAttribute="trailing" secondItem="Rgb-Q8-CKp" secondAttribute="trailingMargin" id="um1-Oc-J1l"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -198,13 +198,13 @@
                                                     <exclude reference="smY-Rb-8Fc"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="4zE-vh-RkY"/>
-                                                    <exclude reference="ELq-OP-MfK"/>
-                                                    <exclude reference="HV1-H7-lq6"/>
-                                                    <exclude reference="a82-OX-lxv"/>
-                                                    <exclude reference="kd5-Y6-Aau"/>
-                                                    <exclude reference="x3S-hr-FNt"/>
-                                                    <exclude reference="yrG-Gw-vI2"/>
+                                                    <exclude reference="1NV-5k-Vck"/>
+                                                    <exclude reference="DuH-DM-Cfy"/>
+                                                    <exclude reference="dTq-Lb-tyR"/>
+                                                    <exclude reference="69P-rQ-YuV"/>
+                                                    <exclude reference="Jgd-xu-tb0"/>
+                                                    <exclude reference="nel-YS-dME"/>
+                                                    <exclude reference="um1-Oc-J1l"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -213,13 +213,13 @@
                                                     <include reference="smY-Rb-8Fc"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="4zE-vh-RkY"/>
-                                                    <include reference="ELq-OP-MfK"/>
-                                                    <include reference="HV1-H7-lq6"/>
-                                                    <include reference="a82-OX-lxv"/>
-                                                    <include reference="kd5-Y6-Aau"/>
-                                                    <include reference="x3S-hr-FNt"/>
-                                                    <include reference="yrG-Gw-vI2"/>
+                                                    <include reference="1NV-5k-Vck"/>
+                                                    <include reference="DuH-DM-Cfy"/>
+                                                    <include reference="dTq-Lb-tyR"/>
+                                                    <include reference="69P-rQ-YuV"/>
+                                                    <include reference="Jgd-xu-tb0"/>
+                                                    <include reference="nel-YS-dME"/>
+                                                    <include reference="um1-Oc-J1l"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
