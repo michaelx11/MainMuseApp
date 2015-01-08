@@ -13,11 +13,15 @@ class AppViewController: UIViewController {
     @IBOutlet var friendsTableView : UITableView!;
     @IBOutlet var addFriendButton : UIBarButtonItem!;
     
+    var refreshControl : UIRefreshControl!;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        println("APP VIEW DID LOAD");
+        refreshControl = UIRefreshControl();
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged);
+        friendsTableView.addSubview(refreshControl);
     }
     
     func obtainData() {
@@ -26,6 +30,11 @@ class AppViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         obtainData();
+    }
+    
+    func refresh(refreshControl: UIRefreshControl) {
+        obtainData();
+//        refreshControl.endRefreshing();
     }
     
     func getUserData(id: NSString, token: NSString) {
@@ -53,6 +62,7 @@ class AppViewController: UIViewController {
                 localData.loadUserObject(jsonResult);
                 dispatch_async(dispatch_get_main_queue(), {
                     self.friendsTableView.reloadData();
+                    self.refreshControl.endRefreshing();
                 });
             } else {
                 println(jsonResult["error"]);
