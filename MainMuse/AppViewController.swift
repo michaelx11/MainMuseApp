@@ -52,7 +52,7 @@ class AppViewController: UIViewController {
             if (jsonResult["error"] == nil) {
                 localData.loadUserObject(jsonResult);
                 dispatch_async(dispatch_get_main_queue(), {
-                self.friendsTableView.reloadData();
+                    self.friendsTableView.reloadData();
                 });
             } else {
                 println(jsonResult["error"]);

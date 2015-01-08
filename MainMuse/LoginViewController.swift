@@ -96,15 +96,17 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             }
             println(jsonResult);
             
-            if (jsonResult["accesstoken"] != nil) {
+            dispatch_async(dispatch_get_main_queue(), {
+                if (jsonResult["accesstoken"] != nil) {
 
-                localData.appAccessToken = jsonResult["accesstoken"] as NSString;
-                println(localData.appAccessToken);
-                localData.verified = true;
-                self.performSegueWithIdentifier("loggedInSegue", sender: self);
-            } else {
-                println(jsonResult["error"]);
-            }
+                    localData.appAccessToken = jsonResult["accesstoken"] as NSString;
+                    println(localData.appAccessToken);
+                    localData.verified = true;
+                    self.performSegueWithIdentifier("loggedInSegue", sender: self);
+                } else {
+                    println(jsonResult["error"]);
+                }
+            });
 
         })
         
