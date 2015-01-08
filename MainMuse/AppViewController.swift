@@ -11,6 +11,7 @@ import UIKit
 class AppViewController: UIViewController {
 
     @IBOutlet var friendsTableView : UITableView!;
+    @IBOutlet var addFriendButton : UIBarButtonItem!;
     
     var tableData : [String] = ["Michael Xu", "Minerva Zhou"];
     
@@ -18,6 +19,14 @@ class AppViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.rightBarButtonItem = addFriendButton;
+        self.navigationController?.navigationItem.rightBarButtonItem = addFriendButton;
+        self.tabBarController?.navigationItem.rightBarButtonItem = addFriendButton;
+        println("APP VIEW DID LOAD");
+        
+    }
+    
+    func getUserData() {
         
     }
 
@@ -48,19 +57,6 @@ class AppViewController: UIViewController {
         }
         cell.textLabel?.text = tableData[indexPath.row] as String;
         readButton.friendName = tableData[indexPath.row] as String;
-        /*
-        cell.textLabel?.text = "Row #\(indexPath.row)"
-        cell.detailTextLabel?.text = "Subtitle #\(indexPath.row)"
-
-        var buttonView = UIButton();
-        buttonView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right;
-        buttonView.frame = CGRect(x: 300, y: 0, width: 50, height: 50);
-//        var horizontalConstraint = NSLayoutConstraint(item: <#AnyObject#>, attribute: <#NSLayoutAttribute#>, relatedBy: <#NSLayoutRelation#>, toItem: <#AnyObject?#>, attribute: <#NSLayoutAttribute#>, multiplier: <#CGFloat#>, constant: <#CGFloat#>)
-//        buttonView.addConstraint(NSLayoutConstraint.)
-        buttonView.setTitle("Read!", forState : UIControlState.Normal);
-        buttonView.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal);
-        cell.addSubview(buttonView);
-        */
         
         if (firstView) {
             var yOffset : CGFloat = 0;

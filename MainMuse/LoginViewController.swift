@@ -45,9 +45,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         localData.localId = user.objectID;
         localData.fullName = user.name;
         localData.localEmail = userEmail;
+        println(localData.accessToken);
         
         if (!fetchedUserInfo) {
-            verifyUserAndSegue(localData.localId, accessToken: localData.accessToken);
+            verifyUserAndSegue(localData.localId, name: localData.fullName, email: localData.localEmail, accessToken: localData.accessToken);
             fetchedUserInfo = true;
         }
     }
@@ -68,12 +69,15 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func verifyUserAndSegue(id: NSString, accessToken: NSString) {
+    func verifyUserAndSegue(id: NSString, name: NSString, email: NSString, accessToken: NSString) {
         if (localData.verified) {
             return;
         }
         
-        let urlPath = "http://view.ninja:9988/verifyuser?id=" + id + "&token=" + accessToken;
+        var rawPath : String = "http://view.ninja:9988/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
+//        var urlPath : String = "http://view.ninja:9988/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
+        let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
+        println(urlPath);
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
@@ -92,9 +96,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             }
             println(jsonResult);
             
-            if (jsonResult["success"] != nil) {
+            if (jsonResult["accesstoken"] != nil) {
                 self.performSegueWithIdentifier("loggedInSegue", sender: self);
-                localData.localFriendCode = "hwlejoaef";
+                localData.accessToken = jsonResult["accesstoken"] as NSString;
+                println(localData.accessToken);
                 localData.verified = true;
             } else {
                 println(jsonResult["error"]);

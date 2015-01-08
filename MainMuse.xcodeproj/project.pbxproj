@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4A12D521A5E0D87004630BB /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D511A5E0D87004630BB /* FriendData.swift */; };
 		F4D9B43F1A58C81900F28DEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B43E1A58C81900F28DEB /* AppDelegate.swift */; };
 		F4D9B4411A58C81900F28DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4401A58C81900F28DEB /* ViewController.swift */; };
 		F4D9B4441A58C81900F28DEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D9B4421A58C81900F28DEB /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F4A12D511A5E0D87004630BB /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		F4D9B4391A58C81900F28DEB /* MainMuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainMuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D9B43D1A58C81900F28DEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D9B43E1A58C81900F28DEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				F4D9B46F1A5A431200F28DEB /* FriendsTableViewCell.swift */,
 				F4D9B4731A5A6FA400F28DEB /* ReaderViewController.swift */,
 				F4D9B47C1A5CFAF300F28DEB /* AppLocalData.swift */,
+				F4A12D511A5E0D87004630BB /* FriendData.swift */,
 				F4D9B4421A58C81900F28DEB /* Main.storyboard */,
 				F4D9B4451A58C81900F28DEB /* Images.xcassets */,
 				F4D9B4471A58C81900F28DEB /* LaunchScreen.xib */,
@@ -251,6 +254,7 @@
 				F4D9B46E1A5A3DD600F28DEB /* ProfileViewController.swift in Sources */,
 				F4D9B46C1A5A36E200F28DEB /* MessageListController.swift in Sources */,
 				F4D9B4681A5A136C00F28DEB /* LoginViewController.swift in Sources */,
+				F4A12D521A5E0D87004630BB /* FriendData.swift in Sources */,
 				F4D9B47D1A5CFAF300F28DEB /* AppLocalData.swift in Sources */,
 				F4D9B4761A5A74A200F28DEB /* FriendButton.swift in Sources */,
 				F4D9B4701A5A431200F28DEB /* FriendsTableViewCell.swift in Sources */,

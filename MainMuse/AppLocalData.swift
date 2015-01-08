@@ -16,6 +16,8 @@ class AppLocalData {
     var localFriendCode : NSString!;
     var verified : Bool;
     
+    var friendsList : [FriendData];
+    
     init() {
         fullName = "";
         localId = "";
@@ -23,5 +25,6 @@ class AppLocalData {
         localEmail = "";
         localFriendCode = "";
         verified = false;
+        friendsList = [];
     }
 }
