@@ -78,6 +78,7 @@ class MessageEditorViewController: UIViewController {
             
             dispatch_async(dispatch_get_main_queue(), {
                 if (localData.editType == "append") {
+                    println("Trying to call segue now");
                     self.performSegueWithIdentifier("unwindAfterAppendSegue", sender: self);
                 }
                 self.lock = false;
@@ -85,10 +86,7 @@ class MessageEditorViewController: UIViewController {
         })
         task.resume();
     }
-    
-    @IBAction func unwindWhenMessageAppended(segue: UIStoryboardSegue) {
-        println("Segue is happening!");
-    }
+
 
     /*
     // MARK: - Navigation

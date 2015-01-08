@@ -137,6 +137,9 @@ class MessageListController: UIViewController {
             localData.messageIndex = "-1";
         }
     }
-
-
+    
+    
+    @IBAction func unwindWhenMessageAppended(segue: UIStoryboardSegue) {
+        println("Segue is happening!");
+    }
 }
