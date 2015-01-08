@@ -229,7 +229,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="bLn-Nq-KvK" id="CCw-ga-K8o"/>
+                                    <outlet property="dataSource" destination="bLn-Nq-KvK" id="Fpo-03-fBr"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -278,6 +278,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addFriendButton" destination="CVm-rX-Y7E" id="P5Y-1E-B8V"/>
+                        <outlet property="friendsTableView" destination="ygL-Yj-2yg" id="mo4-8t-OWP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SH2-ld-0Si" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -31,6 +31,37 @@ class AddFriendViewController: UIViewController {
     func dismissKeyboard() {
         textField.resignFirstResponder();
     }
+    
+    func addFriend(friendCode : NSString) {
+        var rawPath : String = "http://" + HOST + ":9988/addfriend?id=" + localData.localId + "&token=" + localData.appAccessToken + "&friendcode=" + friendCode;
+        let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
+        println(urlPath);
+        let url = NSURL(string: urlPath)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
+            println("Task completed")
+            if(error != nil) {
+                // If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+                return;
+            }
+            var err: NSError?
+            
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            if(err != nil) {
+                // If there is an error parsing JSON, print it to the console
+                println("JSON Error \(err!.localizedDescription)")
+                return;
+            }
+            if (jsonResult["error"] != nil) {
+                println(jsonResult["error"]);
+            } else {
+
+            }
+        })
+        
+        task.resume()
+    }
 
     /*
     // MARK: - Navigation

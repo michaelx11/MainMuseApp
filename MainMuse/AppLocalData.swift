@@ -14,6 +14,7 @@ class AppLocalData {
     var fullName : NSString!;
     var localId : NSString!;
     var accessToken : NSString!;
+    var appAccessToken : NSString!;
     var localEmail : NSString!;
     var localFriendCode : NSString!;
     var verified : Bool;
@@ -28,5 +29,33 @@ class AppLocalData {
         localFriendCode = "";
         verified = false;
         friendsList = [];
+    }
+    
+    func loadUserObject(userObj: NSDictionary) {
+        localFriendCode = userObj["friendcode"] as NSString;
+        if (userObj["queues"] != nil) {
+            friendsList = [];
+            let queues : NSDictionary = userObj["queues"] as NSDictionary;
+            for (id, obj) in queues {
+                let syncObject : NSDictionary = obj["sync"] as NSDictionary;
+                println(syncObject);
+                if (syncObject["status"] as NSString != "accepted") {
+                    continue;
+                }
+                
+                var tempData = FriendData();
+                tempData.friendId = id as NSString;
+                tempData.friendName = syncObject["name"] as NSString;
+                var timestamp : NSInteger = syncObject["timestamp"] as NSInteger;
+                var interval : NSInteger = syncObject["interval"] as NSInteger;
+                var currentTime : Double = (NSDate().timeIntervalSince1970);
+                var currentTimeInt : NSInteger = NSInteger(currentTime * 1000.0);
+                println(timestamp);
+                println(currentTimeInt);
+                println(interval);
+                tempData.newMessage = (currentTimeInt - timestamp >= interval);
+                friendsList.append(tempData);
+            }
+        }
     }
 }

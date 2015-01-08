@@ -97,10 +97,11 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             println(jsonResult);
             
             if (jsonResult["accesstoken"] != nil) {
-                self.performSegueWithIdentifier("loggedInSegue", sender: self);
-                localData.accessToken = jsonResult["accesstoken"] as NSString;
-                println(localData.accessToken);
+
+                localData.appAccessToken = jsonResult["accesstoken"] as NSString;
+                println(localData.appAccessToken);
                 localData.verified = true;
+                self.performSegueWithIdentifier("loggedInSegue", sender: self);
             } else {
                 println(jsonResult["error"]);
             }
