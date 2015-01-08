@@ -803,10 +803,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="mnj-Gr-f7Y" id="Ccv-56-1cr"/>
+                        <outlet property="saveMessageButton" destination="Va5-W9-qL1" id="Acv-y2-gnX"/>
                         <outlet property="subjectTextView" destination="QeX-eW-haH" id="6bb-cf-pqq"/>
+                        <segue destination="fg2-F0-rx0" kind="unwind" identifier="unwindAfterAppendSegue" unwindAction="unwindWhenMessageAppended:" id="WC3-OF-E0n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXf-6Z-Bfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fg2-F0-rx0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1248" y="-369.75"/>
         </scene>

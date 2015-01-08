@@ -12,12 +12,15 @@ class MessageEditorViewController: UIViewController {
 
     @IBOutlet var subjectTextView : UITextView!;
     @IBOutlet var bodyTextView : UITextView!;
+    @IBOutlet var saveMessageButton : UIBarButtonItem!;
 
+    var lock = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        saveMessageButton.action = "saveMessage";
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,14 +41,20 @@ class MessageEditorViewController: UIViewController {
     }
 
     func saveMessage() {
+        if (lock) {
+            return;
+        }
+        lock = true;
+        println("CALLED");
         var messageData : MessageData = MessageData();
         messageData.subject = self.subjectTextView.text;
         messageData.body = self.bodyTextView.text;
         
         var messageJSON : NSString = messageData.toJsonString();
         
-        var rawPath : String = "http://\(HOST):9988/\(localData.editType)message?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(localData.targetUserId)&message=\(messageJSON)";
+        var rawPath : String = "http://\(HOST):9988/\(localData.editType)message?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(localData.targetUserId)&message=\(messageJSON)&index=\(localData.messageIndex)";
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
+        println(urlPath);
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
@@ -66,9 +75,21 @@ class MessageEditorViewController: UIViewController {
                 println(jsonResult["error"]);
             } else {
             }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                if (localData.editType == "append") {
+                    self.performSegueWithIdentifier("unwindAfterAppendSegue", sender: self);
+                }
+                self.lock = false;
+            });
         })
         task.resume();
     }
+    
+    @IBAction func unwindWhenMessageAppended(segue: UIStoryboardSegue) {
+        println("Segue is happening!");
+    }
+
     /*
     // MARK: - Navigation
 

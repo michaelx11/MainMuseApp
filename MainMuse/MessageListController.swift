@@ -63,17 +63,21 @@ class MessageListController: UIViewController {
                 println(jsonResult["error"]);
             } else {
                 let messages : NSDictionary = jsonResult["messages"] as NSDictionary;
-                self.messageList = [];
+                var keys : [NSInteger] = [];
                 for (index, message) in messages {
+                    keys.append((index as NSString).integerValue);
+                }
+                let sortedKeys = keys.sorted(<).map({"\($0)"});
+                
+                self.messageList = [];
+                for index in sortedKeys {
+                    var message : NSDictionary = messages[index] as NSDictionary;
                     var tempMessage = MessageData();
                     tempMessage.index = index as NSString;
                     tempMessage.subject = message["subject"] as NSString;
                     tempMessage.body = message["body"] as NSString;
                     self.messageList.append(tempMessage);
-                    
-                    println(tempMessage);
                 }
-                println(self.messageList);
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     self.messageTable.reloadData();
@@ -130,6 +134,7 @@ class MessageListController: UIViewController {
         } else if (segue.identifier == "addMessageSegue") {
             localData.targetUserId = friendId;
             localData.editType = "append";
+            localData.messageIndex = "-1";
         }
     }
 
