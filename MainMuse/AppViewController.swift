@@ -19,9 +19,6 @@ class AppViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.rightBarButtonItem = addFriendButton;
-        self.navigationController?.navigationItem.rightBarButtonItem = addFriendButton;
-        self.tabBarController?.navigationItem.rightBarButtonItem = addFriendButton;
         println("APP VIEW DID LOAD");
         
     }

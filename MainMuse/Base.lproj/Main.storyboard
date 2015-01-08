@@ -269,7 +269,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Friends" id="iwL-WG-w9n">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CVm-rX-Y7E">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="CVm-rX-Y7E">
                             <connections>
                                 <segue destination="lYc-IR-cXv" kind="show" id="FUd-9j-0MJ"/>
                             </connections>

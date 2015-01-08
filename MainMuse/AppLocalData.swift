@@ -8,6 +8,8 @@
 
 import Foundation
 
+var HOST : NSString = "localhost";
+
 class AppLocalData {
     var fullName : NSString!;
     var localId : NSString!;
