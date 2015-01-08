@@ -35,7 +35,7 @@ class ReaderViewController: UIViewController {
     }
     
     func getMessage() {
-        var rawPath : String = "http://" + HOST + ":9988/readmessage?id=" + localData.localId + "&token=" + localData.appAccessToken + "&sourceid=" + friendId;
+        var rawPath : String = "http://" + HOST + "/readmessage?id=" + localData.localId + "&token=" + localData.appAccessToken + "&sourceid=" + friendId;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)

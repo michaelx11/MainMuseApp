@@ -74,7 +74,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             return;
         }
         
-        var rawPath : String = "http://" + HOST + ":9988/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
+        var rawPath : String = "http://" + HOST + "/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
 //        var urlPath : String = "http://view.ninja:9988/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);

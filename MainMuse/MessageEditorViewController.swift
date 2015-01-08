@@ -20,6 +20,7 @@ class MessageEditorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        bodyTextView.becomeFirstResponder();
         saveMessageButton.action = "saveMessage";
     }
 
@@ -29,15 +30,15 @@ class MessageEditorViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        dispatch_async(dispatch_get_main_queue(), {
+//        dispatch_async(dispatch_get_main_queue(), {
             if (localData.editType == "edit") {
                 self.subjectTextView.text = localData.editingMessage.subject;
                 self.bodyTextView.text = localData.editingMessage.body;
             } else {
-                self.subjectTextView.text = "Your eloquent subject goes here!";
-                self.bodyTextView.text = "Your meaningful musing goes here!";
+                self.subjectTextView.text = "";
+                self.bodyTextView.text = "";
             }
-        });
+//        });
     }
 
     func saveMessage() {
@@ -52,7 +53,7 @@ class MessageEditorViewController: UIViewController {
         
         var messageJSON : NSString = messageData.toJsonString();
         
-        var rawPath : String = "http://\(HOST):9988/\(localData.editType)message?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(localData.targetUserId)&message=\(messageJSON)&index=\(localData.messageIndex)";
+        var rawPath : String = "http://\(HOST)/\(localData.editType)message?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(localData.targetUserId)&message=\(messageJSON)&index=\(localData.messageIndex)";
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)

@@ -20,12 +20,12 @@ class MessageData {
     }
     
     func toJsonString() -> NSString {
-        return "{\"body\" : \"\(body)\", \"subject\": \"\(subject)\"}";
-//        var dict : NSDictionary = NSMutableDictionary();
-//        dict.setValue(subject, forKey: "subject");
-//        dict.setValue(body, forKey: "body");
-//        var bytes = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.allZeros, error: nil);
-//        var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(bytes!, options: nil, error: nil);
-//        return json as NSString;
+//        return "{\"body\" : \"\(body)\", \"subject\": \"\(subject)\"}";
+        var dict : NSDictionary = NSMutableDictionary();
+        dict.setValue(subject, forKey: "subject");
+        dict.setValue(body, forKey: "body");
+        var bytes = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.allZeros, error: nil);
+        var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(bytes!, options: nil, error: nil);
+        return NSString(data: bytes!, encoding: NSUTF8StringEncoding)!;
     }
 }

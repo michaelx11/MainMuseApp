@@ -40,9 +40,8 @@ class MessageListController: UIViewController {
     }
     
     func getMessages() {
-        var rawPath : String = "http://\(HOST):9988/getmessagelist?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(friendId)";
+        var rawPath : String = "http://\(HOST)/getmessagelist?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(friendId)";
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
-        println(urlPath);
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
@@ -142,4 +141,5 @@ class MessageListController: UIViewController {
     @IBAction func unwindWhenMessageAppended(segue: UIStoryboardSegue) {
         println("Segue is happening!");
     }
+    
 }

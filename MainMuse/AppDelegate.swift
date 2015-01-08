@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBLoginView.self;
         FBProfilePictureView.self;
+        var dummyField : UITextField = UITextField();
+        dummyField.becomeFirstResponder();
+        dummyField.resignFirstResponder();
+        dummyField.removeFromSuperview();
         
         return true
     }

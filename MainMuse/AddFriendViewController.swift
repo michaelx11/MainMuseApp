@@ -34,8 +34,8 @@ class AddFriendViewController: UIViewController {
         textField.resignFirstResponder();
     }
     
-    func addFriend() {
-        var rawPath : String = "http://" + HOST + ":9988/addfriend?id=" + localData.localId + "&token=" + localData.appAccessToken + "&friendcode=" + textField.text;
+    @IBAction func addFriend() {
+        var rawPath : String = "http://" + HOST + "/addfriend?id=" + localData.localId + "&token=" + localData.appAccessToken + "&friendcode=" + textField.text;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)

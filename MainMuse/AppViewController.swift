@@ -29,7 +29,7 @@ class AppViewController: UIViewController {
     }
     
     func getUserData(id: NSString, token: NSString) {
-        var rawPath : String = "http://" + HOST + ":9988/getuserdata?id=" + id + "&token=" + token;
+        var rawPath : String = "http://" + HOST + "/getuserdata?id=" + id + "&token=" + token;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)
@@ -53,7 +53,6 @@ class AppViewController: UIViewController {
                 localData.loadUserObject(jsonResult);
                 dispatch_async(dispatch_get_main_queue(), {
                 self.friendsTableView.reloadData();
-                println(localData.friendsList.count);
                 });
             } else {
                 println(jsonResult["error"]);
@@ -85,7 +84,6 @@ class AppViewController: UIViewController {
             return cell;
         }
         
-        println(localData.friendsList.count);
         let friend : FriendData = localData.friendsList[indexPath.row];
         cell.textLabel?.text = friend.friendName;
         readButton.friendName = friend.friendName;
@@ -93,7 +91,6 @@ class AppViewController: UIViewController {
         writeButton.friendName = friend.friendName;
         writeButton.friendId = friend.friendId;
         
-        println(friend.newMessage);
         if (friend.newMessage as Bool) {
             readButton.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal);
         } else {
