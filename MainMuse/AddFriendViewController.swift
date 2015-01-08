@@ -13,6 +13,7 @@ class AddFriendViewController: UIViewController {
     @IBOutlet var myCodeLabel : UILabel!;
     @IBOutlet var textField : UITextField!;
     @IBOutlet var resultTextView : UITextView!;
+    @IBOutlet var saveFriendButton : UIBarButtonItem!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class AddFriendViewController: UIViewController {
         var tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard");
         self.view.addGestureRecognizer(tapRecognizer);
         myCodeLabel.text = myCodeLabel.text! + " " + localData.localFriendCode;
+        saveFriendButton.action = "addFriend";
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,8 +34,9 @@ class AddFriendViewController: UIViewController {
         textField.resignFirstResponder();
     }
     
-    func addFriend(friendCode : NSString) {
-        var rawPath : String = "http://" + HOST + ":9988/addfriend?id=" + localData.localId + "&token=" + localData.appAccessToken + "&friendcode=" + friendCode;
+    func addFriend() {
+        println("BEING CALLED YEAH");
+        var rawPath : String = "http://" + HOST + ":9988/addfriend?id=" + localData.localId + "&token=" + localData.appAccessToken + "&friendcode=" + textField.text;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)
@@ -56,7 +59,9 @@ class AddFriendViewController: UIViewController {
             if (jsonResult["error"] != nil) {
                 println(jsonResult["error"]);
             } else {
-
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.resultTextView.text = jsonResult["name"] as NSString;
+                })
             }
         })
         
