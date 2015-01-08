@@ -480,24 +480,40 @@
                                     <navigationItem title="Profile" id="eUm-Fi-pVk"/>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsd-56-IGG">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="179" y="106" width="42" height="21"/>
-                                </variation>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06B-zc-Dfn" customClass="FBLoginView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsd-56-IGG">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="Bng-R7-icf">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="279"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Bng-R7-icf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Bng-R7-icf"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Zsd-56-IGG" firstAttribute="centerX" secondItem="OoS-yw-UdY" secondAttribute="centerX" id="12h-vP-62A"/>
                             <constraint firstItem="qDb-Xi-n7i" firstAttribute="top" secondItem="06B-zc-Dfn" secondAttribute="bottom" priority="250" constant="326" id="1di-7d-bsF"/>
                             <constraint firstItem="06B-zc-Dfn" firstAttribute="centerY" secondItem="W26-YN-8Q2" secondAttribute="centerY" id="2cq-wp-Cqt"/>
+                            <constraint firstItem="Zsd-56-IGG" firstAttribute="top" secondItem="OoS-yw-UdY" secondAttribute="bottom" constant="41" id="5nN-Cd-qvI">
+                                <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                            </constraint>
                             <constraint firstItem="06B-zc-Dfn" firstAttribute="centerX" secondItem="OoS-yw-UdY" secondAttribute="centerX" id="9cb-VH-wau"/>
                             <constraint firstItem="OoS-yw-UdY" firstAttribute="top" secondItem="bZG-7a-USU" secondAttribute="bottom" id="Uuw-KE-V4s"/>
                             <constraint firstItem="06B-zc-Dfn" firstAttribute="leading" secondItem="W26-YN-8Q2" secondAttribute="leadingMargin" priority="250" constant="47" id="V6q-8T-Nzr"/>
@@ -507,39 +523,44 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="OoS-yw-UdY"/>
-                                <exclude reference="Zsd-56-IGG"/>
                                 <exclude reference="06B-zc-Dfn"/>
+                                <exclude reference="Zsd-56-IGG"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1di-7d-bsF"/>
                                 <exclude reference="Uuw-KE-V4s"/>
                                 <exclude reference="kK6-H7-ndD"/>
+                                <exclude reference="12h-vP-62A"/>
+                                <exclude reference="5nN-Cd-qvI"/>
                                 <exclude reference="2cq-wp-Cqt"/>
                                 <exclude reference="9cb-VH-wau"/>
                                 <exclude reference="V6q-8T-Nzr"/>
                                 <exclude reference="VjB-xg-lgn"/>
+                                <exclude reference="1di-7d-bsF"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="OoS-yw-UdY"/>
-                                <include reference="Zsd-56-IGG"/>
                                 <include reference="06B-zc-Dfn"/>
+                                <include reference="Zsd-56-IGG"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1di-7d-bsF"/>
                                 <include reference="Uuw-KE-V4s"/>
                                 <include reference="kK6-H7-ndD"/>
+                                <include reference="12h-vP-62A"/>
+                                <include reference="5nN-Cd-qvI"/>
                                 <include reference="2cq-wp-Cqt"/>
                                 <include reference="9cb-VH-wau"/>
                                 <include reference="V6q-8T-Nzr"/>
                                 <include reference="VjB-xg-lgn"/>
+                                <include reference="1di-7d-bsF"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="m7a-oJ-Zqo"/>
                     <connections>
                         <outlet property="fbLogoutView" destination="06B-zc-Dfn" id="1WZ-j0-OU2"/>
+                        <outlet property="nameLabel" destination="Zsd-56-IGG" id="IRu-Vh-Nvs"/>
                         <segue destination="NfQ-yZ-K3j" kind="presentation" identifier="loggedOutSegue" id="uJz-GG-jGc"/>
                     </connections>
                 </viewController>
@@ -1045,7 +1066,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FM5-28-jNB"/>
+        <segue reference="uJz-GG-jGc"/>
         <segue reference="m2H-61-3gj"/>
     </inferredMetricsTieBreakers>
 </document>

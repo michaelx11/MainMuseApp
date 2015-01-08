@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController, FBLoginViewDelegate {
     
     
     @IBOutlet var fbLogoutView : FBLoginView!;
+    @IBOutlet var nameLabel : UILabel!;
     
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class ProfileViewController: UIViewController, FBLoginViewDelegate {
         
         self.fbLogoutView.delegate = self;
         self.fbLogoutView.readPermissions = ["public_profile", "email", "user_friends"];
+        self.nameLabel.text = localData.fullName;
     }
     
     // Facebook Delegate Methods
