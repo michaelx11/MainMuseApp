@@ -35,7 +35,6 @@ class AddFriendViewController: UIViewController {
     }
     
     func addFriend() {
-        println("BEING CALLED YEAH");
         var rawPath : String = "http://" + HOST + ":9988/addfriend?id=" + localData.localId + "&token=" + localData.appAccessToken + "&friendcode=" + textField.text;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
@@ -64,7 +63,6 @@ class AddFriendViewController: UIViewController {
                 })
             }
         })
-        
         task.resume()
     }
 

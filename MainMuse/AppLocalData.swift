@@ -50,10 +50,11 @@ class AppLocalData {
                 var interval : NSInteger = syncObject["interval"] as NSInteger;
                 var currentTime : Double = (NSDate().timeIntervalSince1970);
                 var currentTimeInt : NSInteger = NSInteger(currentTime * 1000.0);
-                println(timestamp);
-                println(currentTimeInt);
-                println(interval);
                 tempData.newMessage = (currentTimeInt - timestamp >= interval);
+                tempData.progress = (Double(currentTimeInt - timestamp)) / (Double(interval));
+                if (tempData.progress > 1.0) {
+                    tempData.progress = 1.0;
+                }
                 friendsList.append(tempData);
             }
         }

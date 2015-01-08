@@ -79,6 +79,7 @@ class AppViewController: UIViewController {
         let cell: FriendsTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as FriendsTableViewCell;
         
         let readButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
+        let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as UIProgressView;
         
 
         if (indexPath.row >= localData.friendsList.count) {
@@ -95,8 +96,10 @@ class AppViewController: UIViewController {
         if (friend.newMessage as Bool) {
             readButton.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal);
         } else {
-            readButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal);
+            readButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal);
         }
+        
+        progressBar.progress = Float(friend.progress);
         
         if (firstView) {
             var yOffset : CGFloat = 0;

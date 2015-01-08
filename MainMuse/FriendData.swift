@@ -12,10 +12,12 @@ class FriendData {
     var friendId : NSString!;
     var friendName : NSString!;
     var newMessage : Bool!;
+    var progress : Double; // out of 1.0
     
     init() {
         friendId = "";
         friendName = "";
         newMessage = false;
+        progress = 0;
     }
 }

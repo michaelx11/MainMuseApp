@@ -8,12 +8,14 @@
 
 import UIKit
 
+// Reused as a table view button that stores data
 class FriendButton: UIButton {
 
     var friendName : NSString!;
     var friendId : NSString!;
     var myId : NSString!;
     var myToken : NSString!;
+    var index : NSInteger!;
     
     /*
     // Only override drawRect: if you perform custom drawing.
