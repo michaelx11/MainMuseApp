@@ -26,6 +26,9 @@ class ReaderViewController: UIViewController {
         navItemView.title = "From: " + friendName;
     }
 
+    override func viewWillAppear(animated: Bool) {
+        getMessage();
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,6 +56,10 @@ class ReaderViewController: UIViewController {
             }
             if (jsonResult["error"] != nil) {
                 println(jsonResult["error"]);
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.subjectLabel.text = "Couldn't obtain message.";
+                    self.textView.text = "Perhaps no messages have been sent!";
+                })
             } else {
                 let message : NSDictionary = jsonResult["message"] as NSDictionary;
                 
