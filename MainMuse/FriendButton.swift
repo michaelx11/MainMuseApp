@@ -15,7 +15,8 @@ class FriendButton: UIButton {
     var friendId : NSString!;
     var myId : NSString!;
     var myToken : NSString!;
-    var index : NSInteger!;
+    var index : NSString!;
+    var message : MessageData!;
     
     /*
     // Only override drawRect: if you perform custom drawing.

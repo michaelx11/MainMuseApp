@@ -11,12 +11,12 @@ import Foundation
 class MessageData {
     var subject : NSString!;
     var body : NSString!;
-    var index : NSInteger!;
+    var index : NSString!;
     
     init() {
         subject = "";
         body = "";
-        index = 0;
+        index = "";
     }
     
     func toJsonString() -> NSString {

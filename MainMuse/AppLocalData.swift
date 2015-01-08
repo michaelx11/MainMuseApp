@@ -13,11 +13,17 @@ var HOST : NSString = "localhost";
 class AppLocalData {
     var fullName : NSString!;
     var localId : NSString!;
-    var accessToken : NSString!;
-    var appAccessToken : NSString!;
+    var accessToken : NSString!; // Facebook access token
+    var appAccessToken : NSString!; // Access token for my server
     var localEmail : NSString!;
     var localFriendCode : NSString!;
     var verified : Bool;
+    
+    // This is for use by the message editor
+    var targetUserId : NSString!;
+    var editType : NSString!; // Either "edit" or "append"
+    var messageIndex : NSString!; // The index or key of the message
+    var editingMessage : MessageData!; // If it's editing, the current state of the message
     
     var friendsList : [FriendData];
     
@@ -48,9 +54,12 @@ class AppLocalData {
                 tempData.friendName = syncObject["name"] as NSString;
                 var timestamp : NSInteger = syncObject["timestamp"] as NSInteger;
                 var interval : NSInteger = syncObject["interval"] as NSInteger;
+                var head : NSInteger = syncObject["head"] as NSInteger;
+                var tail : NSInteger = syncObject["tail"] as NSInteger;
                 var currentTime : Double = (NSDate().timeIntervalSince1970);
                 var currentTimeInt : NSInteger = NSInteger(currentTime * 1000.0);
-                tempData.newMessage = (currentTimeInt - timestamp >= interval);
+                
+                tempData.newMessage = (currentTimeInt - timestamp >= interval) && (head < tail);
                 tempData.progress = (Double(currentTimeInt - timestamp)) / (Double(interval));
                 if (tempData.progress > 1.0) {
                     tempData.progress = 1.0;

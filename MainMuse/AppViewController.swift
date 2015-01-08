@@ -74,10 +74,9 @@ class AppViewController: UIViewController {
     
     var firstView = true;
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
-//        let cell: UITableViewCell = FriendsTableViewCell();
         let cell: FriendsTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as FriendsTableViewCell;
         
+        let writeButton : FriendButton = cell.contentView.viewWithTag(1) as FriendButton;
         let readButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
         let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as UIProgressView;
         
@@ -91,6 +90,8 @@ class AppViewController: UIViewController {
         cell.textLabel?.text = friend.friendName;
         readButton.friendName = friend.friendName;
         readButton.friendId = friend.friendId;
+        writeButton.friendName = friend.friendName;
+        writeButton.friendId = friend.friendId;
         
         println(friend.newMessage);
         if (friend.newMessage as Bool) {

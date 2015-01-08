@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F4A12D521A5E0D87004630BB /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D511A5E0D87004630BB /* FriendData.swift */; };
 		F4A12D541A5E6925004630BB /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D531A5E6925004630BB /* MessageData.swift */; };
+		F4A12D561A5E82BD004630BB /* MessageEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */; };
 		F4D9B43F1A58C81900F28DEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B43E1A58C81900F28DEB /* AppDelegate.swift */; };
 		F4D9B4411A58C81900F28DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4401A58C81900F28DEB /* ViewController.swift */; };
 		F4D9B4441A58C81900F28DEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D9B4421A58C81900F28DEB /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		F4A12D511A5E0D87004630BB /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		F4A12D531A5E6925004630BB /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
+		F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageEditorViewController.swift; sourceTree = "<group>"; };
 		F4D9B4391A58C81900F28DEB /* MainMuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainMuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D9B43D1A58C81900F28DEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D9B43E1A58C81900F28DEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				F4D9B4771A5BA3E800F28DEB /* FriendNavButton.swift */,
 				F4D9B4791A5BBB7C00F28DEB /* AddFriendViewController.swift */,
 				F4D9B46B1A5A36E200F28DEB /* MessageListController.swift */,
+				F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */,
 				F4A12D531A5E6925004630BB /* MessageData.swift */,
 				F4D9B46D1A5A3DD600F28DEB /* ProfileViewController.swift */,
 				F4D9B46F1A5A431200F28DEB /* FriendsTableViewCell.swift */,
@@ -258,6 +261,7 @@
 				F4D9B46C1A5A36E200F28DEB /* MessageListController.swift in Sources */,
 				F4D9B4681A5A136C00F28DEB /* LoginViewController.swift in Sources */,
 				F4A12D521A5E0D87004630BB /* FriendData.swift in Sources */,
+				F4A12D561A5E82BD004630BB /* MessageEditorViewController.swift in Sources */,
 				F4D9B47D1A5CFAF300F28DEB /* AppLocalData.swift in Sources */,
 				F4D9B4761A5A74A200F28DEB /* FriendButton.swift in Sources */,
 				F4D9B4701A5A431200F28DEB /* FriendsTableViewCell.swift in Sources */,

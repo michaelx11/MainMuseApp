@@ -35,11 +35,12 @@ class MessageListController: UIViewController {
     }
     
     override func viewWillAppear(animated : Bool) {
+        self.navigationItem.title = friendName;
         getMessages();
     }
     
     func getMessages() {
-        var rawPath : String = "http://" + HOST + ":9988/getmessagelist?id=" + localData.localId + "&token=" + localData.appAccessToken + "&targetid=" + friendId;
+        var rawPath : String = "http://\(HOST):9988/getmessagelist?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(friendId)";
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)
@@ -65,11 +66,14 @@ class MessageListController: UIViewController {
                 self.messageList = [];
                 for (index, message) in messages {
                     var tempMessage = MessageData();
-                    tempMessage.index = (index as NSString).integerValue;
+                    tempMessage.index = index as NSString;
                     tempMessage.subject = message["subject"] as NSString;
                     tempMessage.body = message["body"] as NSString;
                     self.messageList.append(tempMessage);
+                    
+                    println(tempMessage);
                 }
+                println(self.messageList);
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     self.messageTable.reloadData();
@@ -80,6 +84,7 @@ class MessageListController: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section:    Int) -> Int {
+        println("Count is \(messageList.count)");
         return messageList.count
     }
     
@@ -87,7 +92,7 @@ class MessageListController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as UITableViewCell;
         
-        let numberLabel : UILabel = cell.contentView.viewWithTag(1) as UILabel;
+//        let numberLabel : UILabel = cell.contentView.viewWithTag(1) as UILabel;
         let editButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
         
         
@@ -96,9 +101,10 @@ class MessageListController: UIViewController {
         }
         
         let message : MessageData = messageList[indexPath.row];
-        cell.textLabel?.text = message.subject;
-        numberLabel.text = "\(message.subject).";
+        cell.textLabel?.text = "\(message.index). \(message.subject)";
+//        numberLabel.text = "\(message.subject).";
         editButton.index = message.index;
+        editButton.message = message;
         
         if (firstView) {
             var yOffset : CGFloat = 0;
@@ -115,7 +121,16 @@ class MessageListController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if (segue.identifier == "editMessageSegue") {
+            let senderButton : FriendButton = sender as FriendButton;
+            localData.targetUserId = friendId;
+            localData.editType = "edit";
+            localData.messageIndex = senderButton.index;
+            localData.editingMessage = senderButton.message;
+        } else if (segue.identifier == "addMessageSegue") {
+            localData.targetUserId = friendId;
+            localData.editType = "append";
+        }
     }
 
 
