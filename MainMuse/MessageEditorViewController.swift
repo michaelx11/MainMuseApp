@@ -15,12 +15,16 @@ class MessageEditorViewController: UIViewController {
     @IBOutlet var saveMessageButton : UIBarButtonItem!;
 
     var lock = false;
+    var keyboardShowing : Bool = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         saveMessageButton.action = "saveMessage";
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,7 +91,22 @@ class MessageEditorViewController: UIViewController {
         task.resume();
     }
 
-
+    
+    func keyboardShow(n:NSNotification) {
+        self.keyboardShowing = true
+        
+        let d = n.userInfo!
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        r = self.bodyTextView.convertRect(r, fromView:nil)
+        self.bodyTextView.contentInset.bottom = r.size.height
+        self.bodyTextView.scrollIndicatorInsets.bottom = r.size.height
+    }
+    
+    func keyboardHide(n:NSNotification) {
+        self.keyboardShowing = false
+        self.bodyTextView.contentInset = UIEdgeInsetsZero
+        self.bodyTextView.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
     /*
     // MARK: - Navigation
 

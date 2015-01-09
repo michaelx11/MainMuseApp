@@ -36,6 +36,10 @@ class AppLocalData {
         verified = false;
         friendsList = [];
     }
+
+    func sortUserFunc(a : FriendData, b : FriendData) -> Bool {
+        return (a.friendName.compare(b.friendName)) == NSComparisonResult.OrderedAscending;
+    }
     
     func loadUserObject(userObj: NSDictionary) {
         localFriendCode = userObj["friendcode"] as NSString;
@@ -66,6 +70,7 @@ class AppLocalData {
                 }
                 friendsList.append(tempData);
             }
+            friendsList.sort(sortUserFunc);
         }
     }
 }

@@ -27,6 +27,7 @@ class MessageListController: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,7 +144,7 @@ class MessageListController: UIViewController {
             localData.messageIndex = "-1";
         }
     }
-    
+
     
     @IBAction func unwindWhenMessageAppended(segue: UIStoryboardSegue) {
         println("Segue is happening!");
