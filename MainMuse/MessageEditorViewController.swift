@@ -20,7 +20,6 @@ class MessageEditorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        bodyTextView.becomeFirstResponder();
         saveMessageButton.action = "saveMessage";
     }
 
@@ -30,7 +29,7 @@ class MessageEditorViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-//        dispatch_async(dispatch_get_main_queue(), {
+        dispatch_async(dispatch_get_main_queue(), {
             if (localData.editType == "edit") {
                 self.subjectTextView.text = localData.editingMessage.subject;
                 self.bodyTextView.text = localData.editingMessage.body;
@@ -38,7 +37,7 @@ class MessageEditorViewController: UIViewController {
                 self.subjectTextView.text = "";
                 self.bodyTextView.text = "";
             }
-//        });
+       });
     }
 
     func saveMessage() {

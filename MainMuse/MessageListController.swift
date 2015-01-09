@@ -103,6 +103,13 @@ class MessageListController: UIViewController {
             return cell;
         }
         
+        if (indexPath.row == 0) {
+//            cell.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.8, alpha: 0.5);
+//            cell.backgroundColor = UIColor(red: 178, green: 190, blue: 181, alpha: 1.0);
+//            cell.backgroundColor = UIColor.blueColor();
+        }
+        
+        
         let message : MessageData = messageList[indexPath.row];
         cell.textLabel?.text = "\(message.index). \(message.subject)";
 //        numberLabel.text = "\(message.subject).";

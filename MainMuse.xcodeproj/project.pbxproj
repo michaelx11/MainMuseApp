@@ -206,6 +206,7 @@
 				TargetAttributes = {
 					F4D9B4381A58C81900F28DEB = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = SEJAM9XJD5;
 					};
 					F4D9B44D1A58C81900F28DEB = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -399,6 +400,7 @@
 					/Users/michaelx/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = MainMuse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MainMuse/Bridging-Header.h";
@@ -414,6 +416,7 @@
 					/Users/michaelx/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = MainMuse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MainMuse/Bridging-Header.h";
