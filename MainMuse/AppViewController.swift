@@ -89,6 +89,11 @@ class AppViewController: UIViewController {
         let readButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
         let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as UIProgressView;
         
+//        progressBar.trackImage = UIImage(contentsOfFile: "WhiteEnvelope");
+//        println(UIImage(contentsOfFile: "WhiteEnvelope.png"));
+//        println(progressBar.trackImage);
+//        progressBar.progressImage = UIImage(contentsOfFile: "BlueEnvelope");
+        
 
         if (indexPath.row >= localData.friendsList.count) {
             return cell;

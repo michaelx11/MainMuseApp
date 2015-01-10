@@ -14,5 +14,4 @@ class FriendNavButton: UIBarButtonItem {
     var friendId : NSString!;
     var myId : NSString!;
     var myToken : NSString!;
-    
 }

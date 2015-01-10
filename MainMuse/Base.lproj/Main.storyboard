@@ -193,11 +193,15 @@
                                                         <segue destination="8UL-bJ-9Pa" kind="show" identifier="writeSegue" id="LiM-xs-Shb"/>
                                                     </connections>
                                                 </button>
-                                                <progressView opaque="NO" tag="3" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Eti-mH-ygh">
+                                                <progressView opaque="NO" tag="3" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Eti-mH-ygh">
                                                     <rect key="frame" x="0.0" y="-2" width="150" height="2"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" none="YES" image="YES" updatesFrequently="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="Aan-i9-jmM"/>
                                                     </constraints>
+                                                    <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="Aan-i9-jmM"/>
@@ -1077,7 +1081,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uJz-GG-jGc"/>
+        <segue reference="FM5-28-jNB"/>
         <segue reference="m2H-61-3gj"/>
     </inferredMetricsTieBreakers>
 </document>
