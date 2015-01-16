@@ -594,27 +594,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Pulling message..." translatesAutoresizingMaskIntoConstraints="NO" id="y84-E8-CeW">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="250" constant="542" id="Opd-Fr-6E3">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="600"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Opd-Fr-6E3"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Opd-Fr-6E3"/>
-                                    </mask>
-                                </variation>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting subject..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uk-Rw-872">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -634,15 +613,20 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Pulling message... " translatesAutoresizingMaskIntoConstraints="NO" id="y84-E8-CeW">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="y84-E8-CeW" firstAttribute="leading" secondItem="n1x-6D-vvX" secondAttribute="leadingMargin" id="3tC-tB-cVv"/>
-                            <constraint firstItem="y84-E8-CeW" firstAttribute="top" secondItem="6uk-Rw-872" secondAttribute="bottom" constant="8" symbolic="YES" id="P4X-GF-c55">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-50"/>
-                            </constraint>
+                            <constraint firstItem="y84-E8-CeW" firstAttribute="trailing" secondItem="n1x-6D-vvX" secondAttribute="trailingMargin" id="25b-Dx-iA5"/>
+                            <constraint firstItem="y84-E8-CeW" firstAttribute="top" secondItem="6uk-Rw-872" secondAttribute="bottom" constant="8" symbolic="YES" id="Pkw-RR-kaT"/>
                             <constraint firstItem="6uk-Rw-872" firstAttribute="top" secondItem="HfJ-p5-P5m" secondAttribute="bottom" id="QmP-rJ-5N8"/>
-                            <constraint firstItem="y84-E8-CeW" firstAttribute="trailing" secondItem="n1x-6D-vvX" secondAttribute="trailingMargin" id="XMN-Lk-hzY"/>
+                            <constraint firstItem="Bo5-xt-VYq" firstAttribute="top" secondItem="y84-E8-CeW" secondAttribute="bottom" constant="19" id="cdr-WZ-lxY"/>
+                            <constraint firstItem="y84-E8-CeW" firstAttribute="leading" secondItem="6uk-Rw-872" secondAttribute="leading" id="fWo-zE-A4q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6uk-Rw-872" secondAttribute="trailing" constant="6" id="mU0-Hu-rwp"/>
                             <constraint firstItem="6uk-Rw-872" firstAttribute="leading" secondItem="n1x-6D-vvX" secondAttribute="leadingMargin" constant="-6" id="sBp-y0-uj0">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
@@ -650,30 +634,32 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="y84-E8-CeW"/>
                                 <exclude reference="6uk-Rw-872"/>
+                                <exclude reference="y84-E8-CeW"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="QmP-rJ-5N8"/>
                                 <exclude reference="mU0-Hu-rwp"/>
                                 <exclude reference="sBp-y0-uj0"/>
-                                <exclude reference="3tC-tB-cVv"/>
-                                <exclude reference="P4X-GF-c55"/>
-                                <exclude reference="XMN-Lk-hzY"/>
+                                <exclude reference="cdr-WZ-lxY"/>
+                                <exclude reference="25b-Dx-iA5"/>
+                                <exclude reference="Pkw-RR-kaT"/>
+                                <exclude reference="fWo-zE-A4q"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="y84-E8-CeW"/>
                                 <include reference="6uk-Rw-872"/>
+                                <include reference="y84-E8-CeW"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="QmP-rJ-5N8"/>
                                 <include reference="mU0-Hu-rwp"/>
                                 <include reference="sBp-y0-uj0"/>
-                                <include reference="3tC-tB-cVv"/>
-                                <include reference="P4X-GF-c55"/>
-                                <include reference="XMN-Lk-hzY"/>
+                                <include reference="cdr-WZ-lxY"/>
+                                <include reference="25b-Dx-iA5"/>
+                                <include reference="Pkw-RR-kaT"/>
+                                <include reference="fWo-zE-A4q"/>
                             </mask>
                         </variation>
                     </view>
