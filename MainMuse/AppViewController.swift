@@ -81,6 +81,15 @@ class AppViewController: UIViewController {
         return localData.friendsList.count
     }
     
+    func convertProgressToString(progress : Float) -> String {
+        let remaining : Float = 1.0 - progress;
+        if (remaining >= 0.04999) {
+            return "\(Int(remaining * 20.0))h";
+        } else {
+            return "\(Int(remaining / 0.05 * 60.0))m";
+        }
+    }
+    
     var firstView = true;
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: FriendsTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as FriendsTableViewCell;
@@ -88,19 +97,16 @@ class AppViewController: UIViewController {
         let writeButton : FriendButton = cell.contentView.viewWithTag(1) as FriendButton;
         let readButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
         let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as UIProgressView;
-        
-//        progressBar.trackImage = UIImage(contentsOfFile: "WhiteEnvelope");
-//        println(UIImage(contentsOfFile: "WhiteEnvelope.png"));
-//        println(progressBar.trackImage);
-//        progressBar.progressImage = UIImage(contentsOfFile: "BlueEnvelope");
-        
+        let progressLabel : UILabel = cell.contentView.viewWithTag(4) as UILabel;
+        let nameLabel : UILabel = cell.contentView.viewWithTag(5) as UILabel;
 
         if (indexPath.row >= localData.friendsList.count) {
             return cell;
         }
         
         let friend : FriendData = localData.friendsList[indexPath.row];
-        cell.textLabel?.text = friend.friendName;
+//        cell.textLabel?.text = friend.friendName;
+        nameLabel.text = friend.friendName;
         readButton.friendName = friend.friendName;
         readButton.friendId = friend.friendId;
         writeButton.friendName = friend.friendName;
@@ -113,6 +119,8 @@ class AppViewController: UIViewController {
         }
         
         progressBar.progress = Float(friend.progress);
+        progressLabel.text = convertProgressToString(progressBar.progress);
+
         
         if (firstView) {
             var yOffset : CGFloat = 0;
