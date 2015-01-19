@@ -213,11 +213,14 @@
                                                         </mask>
                                                     </variation>
                                                 </progressView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximillian Maxmann" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEz-Rc-Yey">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Friend Name" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEz-Rc-Yey">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="5" width="180" height="36"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="san-wW-zBL">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -284,14 +287,6 @@
                                                     <exclude reference="san-wW-zBL"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="GP0-4k-rRn"/>
-                                                    <exclude reference="PCV-BA-l0t"/>
-                                                    <exclude reference="pzN-cd-n9o"/>
-                                                    <exclude reference="4CE-Rp-MeT"/>
-                                                    <exclude reference="CVh-IY-tYe"/>
-                                                    <exclude reference="Dnx-eu-14m"/>
-                                                    <exclude reference="LN0-fP-IIw"/>
-                                                    <exclude reference="z9k-t3-a5f"/>
                                                     <exclude reference="4oa-bE-LO0"/>
                                                     <exclude reference="5vL-eA-xyv"/>
                                                     <exclude reference="EaK-fl-Rmc"/>
@@ -302,14 +297,22 @@
                                                     <exclude reference="m7f-6C-uRi"/>
                                                     <exclude reference="obP-gd-2zC"/>
                                                     <exclude reference="qP4-Wk-lsb"/>
-                                                    <exclude reference="ae0-Md-7mF"/>
-                                                    <exclude reference="ipT-cj-b1g"/>
-                                                    <exclude reference="nHo-OC-Efn"/>
-                                                    <exclude reference="x3c-ka-Fd1"/>
+                                                    <exclude reference="4CE-Rp-MeT"/>
+                                                    <exclude reference="CVh-IY-tYe"/>
+                                                    <exclude reference="Dnx-eu-14m"/>
+                                                    <exclude reference="LN0-fP-IIw"/>
+                                                    <exclude reference="z9k-t3-a5f"/>
+                                                    <exclude reference="GP0-4k-rRn"/>
+                                                    <exclude reference="PCV-BA-l0t"/>
+                                                    <exclude reference="pzN-cd-n9o"/>
                                                     <exclude reference="NJc-GQ-Bjb"/>
                                                     <exclude reference="ZE4-qC-yGL"/>
                                                     <exclude reference="Zv4-81-zff"/>
                                                     <exclude reference="oO1-Vn-VsQ"/>
+                                                    <exclude reference="ae0-Md-7mF"/>
+                                                    <exclude reference="ipT-cj-b1g"/>
+                                                    <exclude reference="nHo-OC-Efn"/>
+                                                    <exclude reference="x3c-ka-Fd1"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -321,14 +324,6 @@
                                                     <include reference="san-wW-zBL"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="GP0-4k-rRn"/>
-                                                    <include reference="PCV-BA-l0t"/>
-                                                    <include reference="pzN-cd-n9o"/>
-                                                    <include reference="4CE-Rp-MeT"/>
-                                                    <include reference="CVh-IY-tYe"/>
-                                                    <exclude reference="Dnx-eu-14m"/>
-                                                    <include reference="LN0-fP-IIw"/>
-                                                    <exclude reference="z9k-t3-a5f"/>
                                                     <exclude reference="4oa-bE-LO0"/>
                                                     <exclude reference="5vL-eA-xyv"/>
                                                     <exclude reference="EaK-fl-Rmc"/>
@@ -339,14 +334,22 @@
                                                     <exclude reference="m7f-6C-uRi"/>
                                                     <exclude reference="obP-gd-2zC"/>
                                                     <exclude reference="qP4-Wk-lsb"/>
-                                                    <include reference="ae0-Md-7mF"/>
-                                                    <include reference="ipT-cj-b1g"/>
-                                                    <include reference="nHo-OC-Efn"/>
-                                                    <include reference="x3c-ka-Fd1"/>
+                                                    <include reference="4CE-Rp-MeT"/>
+                                                    <include reference="CVh-IY-tYe"/>
+                                                    <exclude reference="Dnx-eu-14m"/>
+                                                    <include reference="LN0-fP-IIw"/>
+                                                    <exclude reference="z9k-t3-a5f"/>
+                                                    <include reference="GP0-4k-rRn"/>
+                                                    <include reference="PCV-BA-l0t"/>
+                                                    <include reference="pzN-cd-n9o"/>
                                                     <include reference="NJc-GQ-Bjb"/>
                                                     <include reference="ZE4-qC-yGL"/>
                                                     <include reference="Zv4-81-zff"/>
                                                     <include reference="oO1-Vn-VsQ"/>
+                                                    <include reference="ae0-Md-7mF"/>
+                                                    <include reference="ipT-cj-b1g"/>
+                                                    <include reference="nHo-OC-Efn"/>
+                                                    <include reference="x3c-ka-Fd1"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
