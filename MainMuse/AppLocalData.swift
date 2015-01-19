@@ -56,14 +56,20 @@ class AppLocalData {
                 var tempData = FriendData();
                 tempData.friendId = id as NSString;
                 tempData.friendName = syncObject["name"] as NSString;
-                var timestamp : NSInteger = syncObject["timestamp"] as NSInteger;
-                var interval : NSInteger = syncObject["interval"] as NSInteger;
+                let timestampObj: AnyObject? = syncObject["timestamp"];
+                let intervalObj: AnyObject? = syncObject["interval"];
+                var timestamp : Int64 = timestampObj!.longLongValue;
+                var interval : Int64 = intervalObj!.longLongValue;
                 var head : NSInteger = syncObject["head"] as NSInteger;
                 var tail : NSInteger = syncObject["tail"] as NSInteger;
                 var currentTime : Double = (NSDate().timeIntervalSince1970);
-                var currentTimeInt : NSInteger = NSInteger(currentTime * 1000.0);
+                var currentTimeInt : Int64 = Int64(currentTime * 1000.0);
                 
-                tempData.newMessage = (currentTimeInt - timestamp >= interval) && (head < tail);
+                println(timestamp);
+                println(interval);
+                println(currentTimeInt);
+                
+                tempData.newMessage = (currentTimeInt - Int64(timestamp) >= Int64(interval)) && (head < tail);
                 tempData.progress = (Double(currentTimeInt - timestamp)) / (Double(interval));
                 if (tempData.progress > 1.0) {
                     tempData.progress = 1.0;
