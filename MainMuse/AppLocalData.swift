@@ -65,10 +65,6 @@ class AppLocalData {
                 var currentTime : Double = (NSDate().timeIntervalSince1970);
                 var currentTimeInt : Int64 = Int64(currentTime * 1000.0);
                 
-                println(timestamp);
-                println(interval);
-                println(currentTimeInt);
-                
                 tempData.newMessage = (currentTimeInt - Int64(timestamp) >= Int64(interval)) && (head < tail);
                 tempData.progress = (Double(currentTimeInt - timestamp)) / (Double(interval));
                 if (tempData.progress > 1.0) {

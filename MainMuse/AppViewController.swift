@@ -84,9 +84,9 @@ class AppViewController: UIViewController {
     func convertProgressToString(progress : Float) -> String {
         let remaining : Float = 1.0 - progress;
         if (remaining >= 0.04999) {
-            return "\(Int(remaining * 20.0))h";
+            return "\(Int(remaining * 20.0 + 0.5))h";
         } else {
-            return "\(Int(remaining / 0.05 * 60.0))m";
+            return "\(Int(remaining / 0.05 * 60.0 + 0.5))m";
         }
     }
     
@@ -105,7 +105,6 @@ class AppViewController: UIViewController {
         }
         
         let friend : FriendData = localData.friendsList[indexPath.row];
-//        cell.textLabel?.text = friend.friendName;
         nameLabel.text = friend.friendName;
         readButton.friendName = friend.friendName;
         readButton.friendId = friend.friendId;

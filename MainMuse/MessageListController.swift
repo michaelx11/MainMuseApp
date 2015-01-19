@@ -96,7 +96,7 @@ class MessageListController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as UITableViewCell;
         
-//        let numberLabel : UILabel = cell.contentView.viewWithTag(1) as UILabel;
+        let messageLabel : UILabel = cell.contentView.viewWithTag(1) as UILabel;
         let editButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
         
         
@@ -112,8 +112,7 @@ class MessageListController: UIViewController {
         
         
         let message : MessageData = messageList[indexPath.row];
-        cell.textLabel?.text = "\(message.index). \(message.subject)";
-//        numberLabel.text = "\(message.subject).";
+        messageLabel.text = "\(message.index). \(message.subject)";
         editButton.index = message.index;
         editButton.message = message;
         
