@@ -105,6 +105,7 @@ class MessageListController: UIViewController {
         }
         
         if (indexPath.row == 0) {
+            editButton.tintColor = UIColor.grayColor();
 //            cell.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.8, alpha: 0.5);
 //            cell.backgroundColor = UIColor(red: 178, green: 190, blue: 181, alpha: 1.0);
 //            cell.backgroundColor = UIColor.blueColor();
@@ -116,6 +117,7 @@ class MessageListController: UIViewController {
         editButton.index = message.index;
         editButton.message = message;
         
+        /*
         if (firstView) {
             var yOffset : CGFloat = 0;
             
@@ -126,6 +128,7 @@ class MessageListController: UIViewController {
             tableView.setContentOffset(bottom, animated: false)
             firstView = false
         }
+        */
         
         return cell
     }

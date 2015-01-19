@@ -121,6 +121,7 @@ class AppViewController: UIViewController {
         progressLabel.text = convertProgressToString(progressBar.progress);
 
         
+        /*
         if (firstView) {
             var yOffset : CGFloat = 0;
             
@@ -131,6 +132,7 @@ class AppViewController: UIViewController {
             tableView.setContentOffset(bottom, animated: false)
             firstView = false
         }
+        */
         
         return cell
     }
