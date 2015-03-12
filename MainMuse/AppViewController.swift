@@ -119,20 +119,6 @@ class AppViewController: UIViewController {
         
         progressBar.progress = Float(friend.progress);
         progressLabel.text = convertProgressToString(progressBar.progress);
-
-        
-        /*
-        if (firstView) {
-            var yOffset : CGFloat = 0;
-            
-            if (tableView.contentSize.height > tableView.bounds.size.height) {
-                yOffset = tableView.contentSize.height - tableView.bounds.size.height;
-            }
-            var bottom: CGPoint = CGPoint(x: 0, y: yOffset)
-            tableView.setContentOffset(bottom, animated: false)
-            firstView = false
-        }
-        */
         
         return cell
     }

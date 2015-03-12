@@ -8,7 +8,7 @@
 
 import Foundation
 
-var HOST : NSString = "view.ninja";
+var HOST : NSString = "localhost";
 
 class AppLocalData {
     var fullName : NSString!;

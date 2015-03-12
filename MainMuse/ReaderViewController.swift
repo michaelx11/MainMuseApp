@@ -13,17 +13,24 @@ class ReaderViewController: UIViewController {
     @IBOutlet var subjectLabel : UILabel!;
     @IBOutlet var navItemView : UINavigationItem!;
     @IBOutlet var textView : UITextView!;
+    @IBOutlet var listAllButton : UIBarButtonItem!;
     
     var friendName : NSString!;
     var friendId : NSString!;
     var myId : NSString!;
     var myToken : NSString!;
+    var isLandingPage: Bool!; // whether this is the current message, and if we should show listAllButton
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         navItemView.title = "From: " + friendName;
+        if (isLandingPage != nil && !isLandingPage) {
+            listAllButton.style = UIBarButtonItemStyle.Plain;
+            listAllButton.enabled = false;
+            listAllButton.title = nil;
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -35,6 +42,13 @@ class ReaderViewController: UIViewController {
     }
     
     func getMessage() {
+        if (isLandingPage != nil && !isLandingPage) {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.subjectLabel.text = localData.editingMessage.subject as NSString;
+                self.textView.text = localData.editingMessage.body as NSString;
+            })
+            return;
+        }
         var rawPath : String = "http://" + HOST + "/readmessage?id=" + localData.localId + "&token=" + localData.appAccessToken + "&sourceid=" + friendId;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
@@ -72,14 +86,24 @@ class ReaderViewController: UIViewController {
         task.resume()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (sender is UIBarButtonItem) {
+            if (segue.identifier == "listAllSegue") {
+                println("LIST YOO");
+                let readListController : MessageReaderListController = segue.destinationViewController as MessageReaderListController;
+                readListController.friendId = self.friendId;
+                readListController.friendName = self.friendName;
+                readListController.myToken = self.myToken;
+                readListController.myId = self.myId;
+            }
+        }
     }
-    */
+
 
 }

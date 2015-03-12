@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F41EA3341AB20424005289A7 /* MessageReaderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EA3331AB20424005289A7 /* MessageReaderListController.swift */; };
+		F41EA3361AB22250005289A7 /* LocalMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */; };
 		F4A12D521A5E0D87004630BB /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D511A5E0D87004630BB /* FriendData.swift */; };
 		F4A12D541A5E6925004630BB /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D531A5E6925004630BB /* MessageData.swift */; };
 		F4A12D561A5E82BD004630BB /* MessageEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F41EA3331AB20424005289A7 /* MessageReaderListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageReaderListController.swift; sourceTree = "<group>"; };
+		F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalMessageViewController.swift; path = ../LocalMessageViewController.swift; sourceTree = "<group>"; };
 		F4A12D511A5E0D87004630BB /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		F4A12D531A5E6925004630BB /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageEditorViewController.swift; sourceTree = "<group>"; };
@@ -116,11 +120,13 @@
 				F4D9B4771A5BA3E800F28DEB /* FriendNavButton.swift */,
 				F4D9B4791A5BBB7C00F28DEB /* AddFriendViewController.swift */,
 				F4D9B46B1A5A36E200F28DEB /* MessageListController.swift */,
+				F41EA3331AB20424005289A7 /* MessageReaderListController.swift */,
 				F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */,
 				F4A12D531A5E6925004630BB /* MessageData.swift */,
 				F4D9B46D1A5A3DD600F28DEB /* ProfileViewController.swift */,
 				F4D9B46F1A5A431200F28DEB /* FriendsTableViewCell.swift */,
 				F4D9B4731A5A6FA400F28DEB /* ReaderViewController.swift */,
+				F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */,
 				F4D9B47C1A5CFAF300F28DEB /* AppLocalData.swift */,
 				F4A12D511A5E0D87004630BB /* FriendData.swift */,
 				F4D9B4421A58C81900F28DEB /* Main.storyboard */,
@@ -258,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F41EA3361AB22250005289A7 /* LocalMessageViewController.swift in Sources */,
 				F4D9B46E1A5A3DD600F28DEB /* ProfileViewController.swift in Sources */,
 				F4D9B46C1A5A36E200F28DEB /* MessageListController.swift in Sources */,
 				F4D9B4681A5A136C00F28DEB /* LoginViewController.swift in Sources */,
@@ -270,6 +277,7 @@
 				F4D9B46A1A5A137700F28DEB /* AppViewController.swift in Sources */,
 				F4A12D541A5E6925004630BB /* MessageData.swift in Sources */,
 				F4D9B43F1A58C81900F28DEB /* AppDelegate.swift in Sources */,
+				F41EA3341AB20424005289A7 /* MessageReaderListController.swift in Sources */,
 				F4D9B47A1A5BBB7C00F28DEB /* AddFriendViewController.swift in Sources */,
 				F4D9B4741A5A6FA400F28DEB /* ReaderViewController.swift in Sources */,
 				F4D9B4781A5BA3E800F28DEB /* FriendNavButton.swift in Sources */,
