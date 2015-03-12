@@ -21,7 +21,8 @@ class MessageReaderListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("DID LOAD MY MESSAGES FROM DUDE");
+        // otherwise after read -> back, there is space at the top
+        self.automaticallyAdjustsScrollViewInsets = false;
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

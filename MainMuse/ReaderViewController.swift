@@ -95,7 +95,6 @@ class ReaderViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if (sender is UIBarButtonItem) {
             if (segue.identifier == "listAllSegue") {
-                println("LIST YOO");
                 let readListController : MessageReaderListController = segue.destinationViewController as MessageReaderListController;
                 readListController.friendId = self.friendId;
                 readListController.friendName = self.friendName;
