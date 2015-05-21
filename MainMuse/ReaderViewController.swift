@@ -15,10 +15,10 @@ class ReaderViewController: UIViewController {
     @IBOutlet var textView : UITextView!;
     @IBOutlet var listAllButton : UIBarButtonItem!;
     
-    var friendName : NSString!;
-    var friendId : NSString!;
-    var myId : NSString!;
-    var myToken : NSString!;
+    var friendName : String!;
+    var friendId : String!;
+    var myId : String!;
+    var myToken : String!;
     var isLandingPage: Bool!; // whether this is the current message, and if we should show listAllButton
     
     override func viewDidLoad() {
@@ -44,8 +44,8 @@ class ReaderViewController: UIViewController {
     func getMessage() {
         if (isLandingPage != nil && !isLandingPage) {
             dispatch_async(dispatch_get_main_queue(), {
-                self.subjectLabel.text = localData.editingMessage.subject as NSString;
-                self.textView.text = localData.editingMessage.body as NSString;
+                self.subjectLabel.text = localData.editingMessage.subject;
+                self.textView.text = localData.editingMessage.body;
             })
             return;
         }
@@ -62,7 +62,7 @@ class ReaderViewController: UIViewController {
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
                 println("JSON Error \(err!.localizedDescription)")
@@ -75,11 +75,11 @@ class ReaderViewController: UIViewController {
                     self.textView.text = "Perhaps no messages have been sent!";
                 })
             } else {
-                let message : NSDictionary = jsonResult["message"] as NSDictionary;
+                let message : NSDictionary = jsonResult["message"] as! NSDictionary;
                 
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.subjectLabel.text = message["subject"] as NSString;
-                    self.textView.text = message["body"] as NSString;
+                    self.subjectLabel.text = message["subject"] as? String;
+                    self.textView.text = message["body"] as! String;
                 })
             }
         })
@@ -95,7 +95,7 @@ class ReaderViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if (sender is UIBarButtonItem) {
             if (segue.identifier == "listAllSegue") {
-                let readListController : MessageReaderListController = segue.destinationViewController as MessageReaderListController;
+                let readListController : MessageReaderListController = segue.destinationViewController as! MessageReaderListController;
                 readListController.friendId = self.friendId;
                 readListController.friendName = self.friendName;
                 readListController.myToken = self.myToken;

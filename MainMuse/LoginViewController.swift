@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         println("User: \(user)");
         println("User ID: \(user.objectID)");
         println("User Name: \(user.name)");
-        var userEmail = user.objectForKey("email") as String;
+        var userEmail = user.objectForKey("email") as! String;
         println("User Email: \(userEmail)");
 
         localData.accessToken = FBSession.activeSession().accessTokenData.accessToken;
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func verifyUserAndSegue(id: NSString, name: NSString, email: NSString, accessToken: NSString) {
+    func verifyUserAndSegue(id: String, name: String, email: String, accessToken: String) {
         if (localData.verified) {
             return;
         }
@@ -89,7 +89,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
                 println("JSON Error \(err!.localizedDescription)")
@@ -99,7 +99,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             dispatch_async(dispatch_get_main_queue(), {
                 if (jsonResult["accesstoken"] != nil) {
 
-                    localData.appAccessToken = jsonResult["accesstoken"] as NSString;
+                    localData.appAccessToken = jsonResult["accesstoken"] as! String;
                     println(localData.appAccessToken);
                     localData.verified = true;
                     self.performSegueWithIdentifier("loggedInSegue", sender: self);

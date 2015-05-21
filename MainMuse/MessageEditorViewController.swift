@@ -35,8 +35,8 @@ class MessageEditorViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         dispatch_async(dispatch_get_main_queue(), {
             if (localData.editType == "edit") {
-                self.subjectTextView.text = localData.editingMessage.subject;
-                self.bodyTextView.text = localData.editingMessage.body;
+                self.subjectTextView.text = String(localData.editingMessage.subject);
+                self.bodyTextView.text = String(localData.editingMessage.body);
             } else {
                 self.subjectTextView.text = "";
                 self.bodyTextView.text = "";
@@ -54,7 +54,7 @@ class MessageEditorViewController: UIViewController {
         messageData.subject = self.subjectTextView.text;
         messageData.body = self.bodyTextView.text;
         
-        var messageJSON : NSString = messageData.toJsonString();
+        var messageJSON : String = messageData.toJsonString();
         
         var rawPath : String = "http://\(HOST)/\(localData.editType)message?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(localData.targetUserId)&message=\(messageJSON)&index=\(localData.messageIndex)";
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
@@ -69,7 +69,7 @@ class MessageEditorViewController: UIViewController {
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
                 println("JSON Error \(err!.localizedDescription)")
@@ -96,7 +96,7 @@ class MessageEditorViewController: UIViewController {
         self.keyboardShowing = true
         
         let d = n.userInfo!
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         r = self.bodyTextView.convertRect(r, fromView:nil)
         self.bodyTextView.contentInset.bottom = r.size.height
         self.bodyTextView.scrollIndicatorInsets.bottom = r.size.height

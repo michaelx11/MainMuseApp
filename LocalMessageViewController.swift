@@ -14,16 +14,16 @@ class LocalMessageViewController: UIViewController {
     @IBOutlet var navItemView : UINavigationItem!;
     @IBOutlet var textView : UITextView!;
     
-    var friendName : NSString!;
-    var friendId : NSString!;
-    var myId : NSString!;
-    var myToken : NSString!;
+    var friendName : String!;
+    var friendId : String!;
+    var myId : String!;
+    var myToken : String!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        navItemView.title = "From: " + friendName;
+        navItemView.title = "From: " + String(friendName);
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -36,8 +36,8 @@ class LocalMessageViewController: UIViewController {
     
     func getMessage() {
         dispatch_async(dispatch_get_main_queue(), {
-            self.subjectLabel.text = localData.editingMessage.subject as NSString;
-            self.textView.text = localData.editingMessage.body as NSString;
+            self.subjectLabel.text = localData.editingMessage.subject;
+            self.textView.text = localData.editingMessage.body;
         })
         return;
     }

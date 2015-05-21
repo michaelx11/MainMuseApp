@@ -10,8 +10,8 @@ import UIKit
 
 class FriendNavButton: UIBarButtonItem {
    
-    var friendName : NSString!;
-    var friendId : NSString!;
-    var myId : NSString!;
-    var myToken : NSString!;
+    var friendName : String!;
+    var friendId : String!;
+    var myId : String!;
+    var myToken : String!;
 }

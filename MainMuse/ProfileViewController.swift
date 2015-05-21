@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController, FBLoginViewDelegate {
         
         self.fbLogoutView.delegate = self;
         self.fbLogoutView.readPermissions = ["public_profile", "email", "user_friends"];
-        self.nameLabel.text = localData.fullName;
+        self.nameLabel.text = String(localData.fullName);
     }
     
     // Facebook Delegate Methods
@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController, FBLoginViewDelegate {
         println("User: \(user)");
         println("User ID: \(user.objectID)");
         println("User Name: \(user.name)");
-        var userEmail = user.objectForKey("email") as String;
+        var userEmail = user.objectForKey("email") as! String;
         println("User Email: \(userEmail)");
     }
     

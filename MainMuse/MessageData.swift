@@ -9,9 +9,9 @@
 import Foundation
 
 class MessageData {
-    var subject : NSString!;
-    var body : NSString!;
-    var index : NSString!;
+    var subject : String!;
+    var body : String!;
+    var index : String!;
     
     init() {
         subject = "";
@@ -19,13 +19,13 @@ class MessageData {
         index = "";
     }
     
-    func toJsonString() -> NSString {
+    func toJsonString() -> String {
 //        return "{\"body\" : \"\(body)\", \"subject\": \"\(subject)\"}";
         var dict : NSDictionary = NSMutableDictionary();
         dict.setValue(subject, forKey: "subject");
         dict.setValue(body, forKey: "body");
         var bytes = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.allZeros, error: nil);
         var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(bytes!, options: nil, error: nil);
-        return NSString(data: bytes!, encoding: NSUTF8StringEncoding)!;
+        return NSString(data: bytes!, encoding: NSUTF8StringEncoding)! as String;
     }
 }

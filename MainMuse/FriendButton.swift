@@ -11,11 +11,11 @@ import UIKit
 // Reused as a table view button that stores data
 class FriendButton: UIButton {
 
-    var friendName : NSString!;
-    var friendId : NSString!;
-    var myId : NSString!;
-    var myToken : NSString!;
-    var index : NSString!;
+    var friendName : String!;
+    var friendId : String!;
+    var myId : String!;
+    var myToken : String!;
+    var index : String!;
     var message : MessageData!;
     
     /*

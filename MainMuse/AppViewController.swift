@@ -37,8 +37,8 @@ class AppViewController: UIViewController {
 //        refreshControl.endRefreshing();
     }
     
-    func getUserData(id: NSString, token: NSString) {
-        var rawPath : String = "http://" + HOST + "/getuserdata?id=" + id + "&token=" + token;
+    func getUserData(id: String, token: String) {
+        var rawPath : String = "http://" + (HOST as String) + "/getuserdata?id=" + id + "&token=" + (token as String);
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)
@@ -52,7 +52,7 @@ class AppViewController: UIViewController {
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
                 println("JSON Error \(err!.localizedDescription)")
@@ -92,13 +92,13 @@ class AppViewController: UIViewController {
     
     var firstView = true;
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: FriendsTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as FriendsTableViewCell;
+        let cell: FriendsTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as! FriendsTableViewCell;
         
-        let writeButton : FriendButton = cell.contentView.viewWithTag(1) as FriendButton;
-        let readButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
-        let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as UIProgressView;
-        let progressLabel : UILabel = cell.contentView.viewWithTag(4) as UILabel;
-        let nameLabel : UILabel = cell.contentView.viewWithTag(5) as UILabel;
+        let writeButton : FriendButton = cell.contentView.viewWithTag(1) as! FriendButton;
+        let readButton : FriendButton = cell.contentView.viewWithTag(2) as! FriendButton;
+        let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as! UIProgressView;
+        let progressLabel : UILabel = cell.contentView.viewWithTag(4) as! UILabel;
+        let nameLabel : UILabel = cell.contentView.viewWithTag(5) as! UILabel;
 
         if (indexPath.row >= localData.friendsList.count) {
             return cell;
@@ -131,10 +131,10 @@ class AppViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (sender is FriendButton) {
-            let uiButton : FriendButton = sender as FriendButton;
+            let uiButton : FriendButton = sender as! FriendButton;
             if (segue.identifier == "readSegue") {
-                let navController : UINavigationController = segue.destinationViewController as UINavigationController;
-                let readerViewController : ReaderViewController = navController.topViewController as ReaderViewController;
+                let navController : UINavigationController = segue.destinationViewController as! UINavigationController;
+                let readerViewController : ReaderViewController = navController.topViewController as! ReaderViewController;
                 readerViewController.friendId = uiButton.friendId;
                 readerViewController.friendName = uiButton.friendName;
                 readerViewController.myToken = uiButton.myToken;
@@ -142,8 +142,8 @@ class AppViewController: UIViewController {
             }
             
             if (segue.identifier == "writeSegue") {
-                let navController : UINavigationController = segue.destinationViewController as UINavigationController;
-                let messageListController : MessageListController = navController.topViewController as MessageListController;
+                let navController : UINavigationController = segue.destinationViewController as! UINavigationController;
+                let messageListController : MessageListController = navController.topViewController as! MessageListController;
                 messageListController.friendId = uiButton.friendId;
                 messageListController.friendName = uiButton.friendName;
                 messageListController.myToken = uiButton.myToken;

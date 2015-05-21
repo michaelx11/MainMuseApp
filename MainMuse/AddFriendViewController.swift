@@ -49,7 +49,7 @@ class AddFriendViewController: UIViewController {
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
                 println("JSON Error \(err!.localizedDescription)")
@@ -59,7 +59,7 @@ class AddFriendViewController: UIViewController {
                 println(jsonResult["error"]);
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.resultTextView.text = jsonResult["name"] as NSString;
+                    self.resultTextView.text = jsonResult["name"] as! String;
                 })
             }
         })

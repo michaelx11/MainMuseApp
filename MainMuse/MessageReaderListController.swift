@@ -10,10 +10,10 @@ import UIKit
 
 class MessageReaderListController: UIViewController {
     
-    var friendName : NSString!;
-    var friendId : NSString!;
-    var myId : NSString!;
-    var myToken : NSString!;
+    var friendName : String!;
+    var friendId : String!;
+    var myId : String!;
+    var myToken : String!;
     
     var messageList : [MessageData] = [];
     
@@ -55,7 +55,7 @@ class MessageReaderListController: UIViewController {
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
                 println("JSON Error \(err!.localizedDescription)")
@@ -64,20 +64,20 @@ class MessageReaderListController: UIViewController {
             if (jsonResult["error"] != nil) {
                 println(jsonResult["error"]);
             } else {
-                let messages : NSDictionary = jsonResult["messages"] as NSDictionary;
+                let messages : NSDictionary = jsonResult["messages"] as! NSDictionary;
                 var keys : [NSInteger] = [];
                 for (index, message) in messages {
-                    keys.append((index as NSString).integerValue);
+                    keys.append(index.integerValue);
                 }
                 let sortedKeys = keys.sorted(>).map({"\($0)"});
                 
                 self.messageList = [];
                 for index in sortedKeys {
-                    var message : NSDictionary = messages[index] as NSDictionary;
+                    var message : NSDictionary = messages[index] as! NSDictionary;
                     var tempMessage = MessageData();
-                    tempMessage.index = index as NSString;
-                    tempMessage.subject = message["subject"] as NSString;
-                    tempMessage.body = message["body"] as NSString;
+                    tempMessage.index = index;
+                    tempMessage.subject = message["subject"] as! String;
+                    tempMessage.body = message["body"] as! String;
                     self.messageList.append(tempMessage);
                 }
                 
@@ -95,10 +95,10 @@ class MessageReaderListController: UIViewController {
     
     var firstView = true;
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as UITableViewCell;
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! UITableViewCell;
         
-        let messageLabel : UILabel = cell.contentView.viewWithTag(1) as UILabel;
-        let readButton : FriendButton = cell.contentView.viewWithTag(2) as FriendButton;
+        let messageLabel : UILabel = cell.contentView.viewWithTag(1) as! UILabel;
+        let readButton : FriendButton = cell.contentView.viewWithTag(2) as! FriendButton;
         
         if (indexPath.row >= messageList.count) {
             return cell;
@@ -114,8 +114,8 @@ class MessageReaderListController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "readMessageSegue") {
-            let uiButton : FriendButton = sender as FriendButton;
-            let readerViewController : ReaderViewController = segue.destinationViewController as ReaderViewController;
+            let uiButton : FriendButton = sender as! FriendButton;
+            let readerViewController : ReaderViewController = segue.destinationViewController as! ReaderViewController;
             readerViewController.friendId = self.friendId;
             readerViewController.friendName = self.friendName;
             readerViewController.myToken = self.myToken;

@@ -9,8 +9,8 @@
 import Foundation
 
 class FriendData {
-    var friendId : NSString!;
-    var friendName : NSString!;
+    var friendId : String!;
+    var friendName : String!;
     var newMessage : Bool!;
     var progress : Double; // out of 1.0
     
