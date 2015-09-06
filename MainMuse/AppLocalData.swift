@@ -8,7 +8,7 @@
 
 import Foundation
 
-var HOST : String = "localhost";
+var HOST : String = "view.ninja";
 
 class AppLocalData {
     var fullName : String!;

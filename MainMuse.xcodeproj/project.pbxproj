@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F415D0AC1B65278A00DB18F7 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415D0AB1B65278A00DB18F7 /* RequestManager.swift */; };
 		F41EA3341AB20424005289A7 /* MessageReaderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EA3331AB20424005289A7 /* MessageReaderListController.swift */; };
 		F41EA3361AB22250005289A7 /* LocalMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */; };
 		F4A12D521A5E0D87004630BB /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D511A5E0D87004630BB /* FriendData.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F415D0AB1B65278A00DB18F7 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestManager.swift; path = ../RequestManager.swift; sourceTree = "<group>"; };
 		F41EA3331AB20424005289A7 /* MessageReaderListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageReaderListController.swift; sourceTree = "<group>"; };
 		F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalMessageViewController.swift; path = ../LocalMessageViewController.swift; sourceTree = "<group>"; };
 		F4A12D511A5E0D87004630BB /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				F4D9B4731A5A6FA400F28DEB /* ReaderViewController.swift */,
 				F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */,
 				F4D9B47C1A5CFAF300F28DEB /* AppLocalData.swift */,
+				F415D0AB1B65278A00DB18F7 /* RequestManager.swift */,
 				F4A12D511A5E0D87004630BB /* FriendData.swift */,
 				F4D9B4421A58C81900F28DEB /* Main.storyboard */,
 				F4D9B4451A58C81900F28DEB /* Images.xcassets */,
@@ -279,6 +282,7 @@
 				F4D9B43F1A58C81900F28DEB /* AppDelegate.swift in Sources */,
 				F41EA3341AB20424005289A7 /* MessageReaderListController.swift in Sources */,
 				F4D9B47A1A5BBB7C00F28DEB /* AddFriendViewController.swift in Sources */,
+				F415D0AC1B65278A00DB18F7 /* RequestManager.swift in Sources */,
 				F4D9B4741A5A6FA400F28DEB /* ReaderViewController.swift in Sources */,
 				F4D9B4781A5BA3E800F28DEB /* FriendNavButton.swift in Sources */,
 			);

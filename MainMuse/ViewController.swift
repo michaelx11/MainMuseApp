@@ -17,16 +17,7 @@ class ViewController: UIViewController{
 
         println("DELEGATED");
     }
-   
-    /*
-    func myVCDidFinish(controller: LoginViewController, text: String) {
-        controller.navigationController?.popViewControllerAnimated(false);
-        println("Navigated");
-    }
-    */
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
