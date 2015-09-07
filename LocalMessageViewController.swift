@@ -19,6 +19,8 @@ class LocalMessageViewController: UIViewController {
     var myId : String!;
     var myToken : String!;
     
+    var localData : AppLocalData = AppLocalData.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +38,8 @@ class LocalMessageViewController: UIViewController {
     
     func getMessage() {
         dispatch_async(dispatch_get_main_queue(), {
-            self.subjectLabel.text = localData.editingMessage.subject;
-            self.textView.text = localData.editingMessage.body;
+            self.subjectLabel.text = self.localData.editingMessage.subject;
+            self.textView.text = self.localData.editingMessage.body;
         })
         return;
     }

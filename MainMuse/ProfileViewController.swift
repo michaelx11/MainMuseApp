@@ -15,6 +15,8 @@ class ProfileViewController: UIViewController, FBLoginViewDelegate {
     @IBOutlet var fbLogoutView : FBLoginView!;
     @IBOutlet var nameLabel : UILabel!;
     
+    var localData : AppLocalData = AppLocalData.sharedInstance
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

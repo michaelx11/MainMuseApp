@@ -120,7 +120,7 @@
                     </view>
                     <connections>
                         <outlet property="fbLoginView" destination="QzD-Ot-eVH" id="1KM-JW-Hok"/>
-                        <segue destination="6EH-56-qaj" kind="show" identifier="loggedInSegue" id="ket-1U-OFS"/>
+                        <segue destination="6EH-56-qaj" kind="presentation" identifier="loggedInSegue" modalPresentationStyle="fullScreen" animates="NO" id="ket-1U-OFS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTg-Zn-fEk" userLabel="First Responder" sceneMemberID="firstResponder"/>

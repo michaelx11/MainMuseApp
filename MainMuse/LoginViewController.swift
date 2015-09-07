@@ -12,11 +12,12 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     
 
     
-    @IBOutlet var fbLoginView : FBLoginView!;
-    @IBOutlet var textView : UITextView!;
+    @IBOutlet var fbLoginView : FBLoginView!
+    @IBOutlet var textView : UITextView!
     
-    var fetchedUserInfo = false;
-    
+    var fetchedUserInfo = false
+    var localData : AppLocalData = AppLocalData.sharedInstance
+
     override func viewDidLoad() {
         super.viewDidLoad()
         println("DID LOAD");
@@ -75,7 +76,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         }
         
         var rawPath : String = "http://" + HOST + "/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
-//        var urlPath : String = "http://view.ninja:9988/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         println(urlPath);
         let url = NSURL(string: urlPath)
@@ -99,9 +99,9 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             dispatch_async(dispatch_get_main_queue(), {
                 if (jsonResult["accesstoken"] != nil) {
 
-                    localData.appAccessToken = jsonResult["accesstoken"] as! String;
-                    println(localData.appAccessToken);
-                    localData.verified = true;
+                    self.localData.appAccessToken = jsonResult["accesstoken"] as! String;
+                    println(self.localData.appAccessToken);
+                    self.localData.verified = true;
                     self.performSegueWithIdentifier("loggedInSegue", sender: self);
                 } else {
                     println(jsonResult["error"]);

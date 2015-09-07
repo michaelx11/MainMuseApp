@@ -27,6 +27,9 @@ class AppLocalData {
     
     var friendsList : [FriendData];
     
+    // Shared instance
+    static let sharedInstance : AppLocalData = AppLocalData();
+    
     init() {
         fullName = "";
         localId = "";

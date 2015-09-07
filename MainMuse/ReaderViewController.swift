@@ -15,6 +15,8 @@ class ReaderViewController: UIViewController {
     @IBOutlet var textView : UITextView!;
     @IBOutlet var listAllButton : UIBarButtonItem!;
     
+    var localData : AppLocalData = AppLocalData.sharedInstance
+    
     var friendName : String!;
     var friendId : String!;
     var myId : String!;
@@ -44,8 +46,8 @@ class ReaderViewController: UIViewController {
     func getMessage() {
         if (isLandingPage != nil && !isLandingPage) {
             dispatch_async(dispatch_get_main_queue(), {
-                self.subjectLabel.text = localData.editingMessage.subject;
-                self.textView.text = localData.editingMessage.body;
+                self.subjectLabel.text = self.localData.editingMessage.subject;
+                self.textView.text = self.localData.editingMessage.body;
             })
             return;
         }

@@ -15,6 +15,8 @@ class AddFriendViewController: UIViewController {
     @IBOutlet var resultTextView : UITextView!;
     @IBOutlet var saveFriendButton : UIBarButtonItem!;
     
+    var localData : AppLocalData = AppLocalData.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

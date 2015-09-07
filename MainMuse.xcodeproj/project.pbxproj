@@ -14,7 +14,6 @@
 		F4A12D541A5E6925004630BB /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D531A5E6925004630BB /* MessageData.swift */; };
 		F4A12D561A5E82BD004630BB /* MessageEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */; };
 		F4D9B43F1A58C81900F28DEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B43E1A58C81900F28DEB /* AppDelegate.swift */; };
-		F4D9B4411A58C81900F28DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4401A58C81900F28DEB /* ViewController.swift */; };
 		F4D9B4441A58C81900F28DEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D9B4421A58C81900F28DEB /* Main.storyboard */; };
 		F4D9B4461A58C81900F28DEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D9B4451A58C81900F28DEB /* Images.xcassets */; };
 		F4D9B4491A58C81900F28DEB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D9B4471A58C81900F28DEB /* LaunchScreen.xib */; };
@@ -52,7 +51,6 @@
 		F4D9B4391A58C81900F28DEB /* MainMuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainMuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D9B43D1A58C81900F28DEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D9B43E1A58C81900F28DEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4D9B4401A58C81900F28DEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4D9B4431A58C81900F28DEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4D9B4451A58C81900F28DEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4D9B4481A58C81900F28DEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				F4D9B43E1A58C81900F28DEB /* AppDelegate.swift */,
-				F4D9B4401A58C81900F28DEB /* ViewController.swift */,
 				F4D9B4671A5A136C00F28DEB /* LoginViewController.swift */,
 				F4D9B4691A5A137700F28DEB /* AppViewController.swift */,
 				F4D9B4751A5A74A200F28DEB /* FriendButton.swift */,
@@ -276,7 +273,6 @@
 				F4D9B47D1A5CFAF300F28DEB /* AppLocalData.swift in Sources */,
 				F4D9B4761A5A74A200F28DEB /* FriendButton.swift in Sources */,
 				F4D9B4701A5A431200F28DEB /* FriendsTableViewCell.swift in Sources */,
-				F4D9B4411A58C81900F28DEB /* ViewController.swift in Sources */,
 				F4D9B46A1A5A137700F28DEB /* AppViewController.swift in Sources */,
 				F4A12D541A5E6925004630BB /* MessageData.swift in Sources */,
 				F4D9B43F1A58C81900F28DEB /* AppDelegate.swift in Sources */,

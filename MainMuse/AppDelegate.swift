@@ -8,8 +8,6 @@
 
 import UIKit
 
-var localData: AppLocalData = AppLocalData();
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Preload keyboard to prevent lag
         var dummyField : UITextField = UITextField();
         dummyField.becomeFirstResponder();
         dummyField.resignFirstResponder();

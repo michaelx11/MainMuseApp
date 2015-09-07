@@ -10,10 +10,11 @@ import UIKit
 
 class AppViewController: UIViewController {
 
-    @IBOutlet var friendsTableView : UITableView!;
-    @IBOutlet var addFriendButton : UIBarButtonItem!;
+    @IBOutlet var friendsTableView : UITableView!
+    @IBOutlet var addFriendButton : UIBarButtonItem!
     
-    var refreshControl : UIRefreshControl!;
+    var refreshControl : UIRefreshControl!
+    var localData : AppLocalData = AppLocalData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +60,7 @@ class AppViewController: UIViewController {
                 return;
             }
             if (jsonResult["error"] == nil) {
-                localData.loadUserObject(jsonResult);
+                self.localData.loadUserObject(jsonResult);
                 dispatch_async(dispatch_get_main_queue(), {
                     self.friendsTableView.reloadData();
                     self.refreshControl.endRefreshing();

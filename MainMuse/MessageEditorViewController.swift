@@ -13,6 +13,8 @@ class MessageEditorViewController: UIViewController {
     @IBOutlet var subjectTextView : UITextView!;
     @IBOutlet var bodyTextView : UITextView!;
     @IBOutlet var saveMessageButton : UIBarButtonItem!;
+    
+    var localData : AppLocalData = AppLocalData.sharedInstance
 
     var lock = false;
     var keyboardShowing : Bool = false;
@@ -34,9 +36,9 @@ class MessageEditorViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         dispatch_async(dispatch_get_main_queue(), {
-            if (localData.editType == "edit") {
-                self.subjectTextView.text = String(localData.editingMessage.subject);
-                self.bodyTextView.text = String(localData.editingMessage.body);
+            if (self.localData.editType == "edit") {
+                self.subjectTextView.text = String(self.localData.editingMessage.subject);
+                self.bodyTextView.text = String(self.localData.editingMessage.body);
             } else {
                 self.subjectTextView.text = "";
                 self.bodyTextView.text = "";
@@ -81,7 +83,7 @@ class MessageEditorViewController: UIViewController {
             }
             
             dispatch_async(dispatch_get_main_queue(), {
-                if (localData.editType == "append") {
+                if (self.localData.editType == "append") {
                     println("Trying to call segue now");
                     self.performSegueWithIdentifier("unwindAfterAppendSegue", sender: self);
                 }
