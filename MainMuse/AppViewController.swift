@@ -26,6 +26,7 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
         friendsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
+    // TODO FIX THIS NONSENSE
     func obtainData() {
         getUserData(localData.localId, token: localData.appAccessToken);
     }
