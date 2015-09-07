@@ -14,7 +14,7 @@ class MessageEditorViewController: UIViewController {
     @IBOutlet var bodyTextView : UITextView!;
     @IBOutlet var saveMessageButton : UIBarButtonItem!;
     
-    var localData : AppLocalData = AppLocalData.sharedInstance
+    let localData : AppLocalData = AppLocalData.sharedInstance
 
     var lock = false;
     var keyboardShowing : Bool = false;

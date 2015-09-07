@@ -15,7 +15,7 @@ class ReaderViewController: UIViewController {
     @IBOutlet var textView : UITextView!;
     @IBOutlet var listAllButton : UIBarButtonItem!;
     
-    var localData : AppLocalData = AppLocalData.sharedInstance
+    let localData : AppLocalData = AppLocalData.sharedInstance
     
     var friendName : String!;
     var friendId : String!;

@@ -16,7 +16,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     @IBOutlet var textView : UITextView!
     
     var fetchedUserInfo = false
-    var localData : AppLocalData = AppLocalData.sharedInstance
+    let localData : AppLocalData = AppLocalData.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     
     func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
         println("User Logged Out");
-        localData = AppLocalData();
         fetchedUserInfo = false;
     }
     

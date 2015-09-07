@@ -17,7 +17,7 @@ class MessageReaderListController: UIViewController {
     
     var messageList : [MessageData] = [];
     
-    var localData : AppLocalData = AppLocalData.sharedInstance
+    let localData : AppLocalData = AppLocalData.sharedInstance
     
     @IBOutlet var messageTable : UITableView!;
     

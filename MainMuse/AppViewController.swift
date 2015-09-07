@@ -14,7 +14,7 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet var addFriendButton : UIBarButtonItem!
     
     var refreshControl : UIRefreshControl!
-    var localData : AppLocalData = AppLocalData.sharedInstance
+    let localData : AppLocalData = AppLocalData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,6 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
         friendsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
-    // TODO FIX THIS NONSENSE
     func obtainData() {
         getUserData(localData.localId, token: localData.appAccessToken);
     }
