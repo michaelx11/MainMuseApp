@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppViewController: UIViewController {
+class AppViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var friendsTableView : UITableView!
     @IBOutlet var addFriendButton : UIBarButtonItem!
@@ -23,6 +23,7 @@ class AppViewController: UIViewController {
         refreshControl = UIRefreshControl();
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged);
         friendsTableView.addSubview(refreshControl);
+        friendsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     func obtainData() {
@@ -91,15 +92,25 @@ class AppViewController: UIViewController {
         }
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80.0
+    }
+    
     var firstView = true;
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: FriendsTableViewCell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as! FriendsTableViewCell;
         
-        let writeButton : FriendButton = cell.contentView.viewWithTag(1) as! FriendButton;
-        let readButton : FriendButton = cell.contentView.viewWithTag(2) as! FriendButton;
-        let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as! UIProgressView;
-        let progressLabel : UILabel = cell.contentView.viewWithTag(4) as! UILabel;
-        let nameLabel : UILabel = cell.contentView.viewWithTag(5) as! UILabel;
+        // Get rid of that horizontal line
+        
+        let writeButton : FriendButton = cell.contentView.viewWithTag(1) as! FriendButton
+        let readButton : FriendButton = cell.contentView.viewWithTag(2) as! FriendButton
+        let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as! UIProgressView
+        let progressLabel : UILabel = cell.contentView.viewWithTag(4) as! UILabel
+        let nameLabel : UILabel = cell.contentView.viewWithTag(5) as! UILabel
+        var profileImage : UIImageView = cell.contentView.viewWithTag(6) as! UIImageView
+        // Circular view
+        profileImage.layer.masksToBounds = true
+        profileImage.layer.cornerRadius = 30.0
 
         if (indexPath.row >= localData.friendsList.count) {
             return cell;
@@ -112,14 +123,26 @@ class AppViewController: UIViewController {
         writeButton.friendName = friend.friendName;
         writeButton.friendId = friend.friendId;
         
+        // Can read message?
         if (friend.newMessage as Bool) {
             readButton.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal);
         } else {
             readButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal);
         }
         
+        // Progress bar
         progressBar.progress = Float(friend.progress);
         progressLabel.text = convertProgressToString(progressBar.progress);
+        
+        // Grab that profile image asynchronously
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            let profileURL : NSURL = NSURL(string: "http://graph.facebook.com/\(friend.friendId)/picture")!
+            let profileImageData = NSData(contentsOfURL: profileURL)
+            dispatch_sync(dispatch_get_main_queue(), {
+                profileImage.image = UIImage(data: profileImageData!, scale: 1.0)
+                return
+            })
+        })
         
         return cell
     }

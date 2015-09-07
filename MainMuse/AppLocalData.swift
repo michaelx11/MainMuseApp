@@ -73,6 +73,9 @@ class AppLocalData {
                 if (tempData.progress > 1.0) {
                     tempData.progress = 1.0;
                 }
+                
+                println(tempData.friendId)
+                println(tempData)
                 friendsList.append(tempData);
             }
             friendsList.sort(sortUserFunc);
