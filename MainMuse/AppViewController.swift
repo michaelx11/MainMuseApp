@@ -137,11 +137,16 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
         // Grab that profile image asynchronously
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
             let profileURL : NSURL = NSURL(string: "http://graph.facebook.com/\(friend.friendId)/picture")!
-            let profileImageData = NSData(contentsOfURL: profileURL)
-            dispatch_sync(dispatch_get_main_queue(), {
-                profileImage.image = UIImage(data: profileImageData!, scale: 1.0)
-                return
-            })
+
+            var error : NSError?
+            if let profileImageData = NSData(contentsOfURL: profileURL, options: nil, error: &error) {
+                dispatch_sync(dispatch_get_main_queue(), {
+                    profileImage.image = UIImage(data: profileImageData, scale: 1.0)
+                    return
+                })
+            } else if let err = error {
+                println(err.userInfo)
+            }
         })
         
         return cell
