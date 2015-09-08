@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageEditorViewController: UIViewController {
+class MessageEditorViewController: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet var subjectTextView : UITextView!;
     @IBOutlet var bodyTextView : UITextView!;
@@ -16,6 +16,7 @@ class MessageEditorViewController: UIViewController {
     
     let localData : AppLocalData = AppLocalData.sharedInstance
 
+    var savedAlert : UIAlertView?
     var lock = false;
     var keyboardShowing : Bool = false;
     
@@ -28,6 +29,8 @@ class MessageEditorViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        savedAlert = UIAlertView(title: "Saved!", message: "Your message has been uploaded!", delegate: self, cancelButtonTitle: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,13 +89,25 @@ class MessageEditorViewController: UIViewController {
                 if (self.localData.editType == "append") {
                     println("Trying to call segue now");
                     self.performSegueWithIdentifier("unwindAfterAppendSegue", sender: self);
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.showSavedAlert()
+                    })
                 }
                 self.lock = false;
             });
         })
         task.resume();
     }
-
+    
+    func showSavedAlert() {
+        savedAlert?.dismissWithClickedButtonIndex(-1, animated: false)
+        savedAlert?.show()
+        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delay, dispatch_get_main_queue(), {
+            savedAlert?.dismissWithClickedButtonIndex(-1, animated: false)
+        })
+    }
     
     func keyboardShow(n:NSNotification) {
         self.keyboardShowing = true
