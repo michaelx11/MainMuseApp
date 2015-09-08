@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>5563E75B-113C-4BCB-B21C-F0BC40DF9159</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MainMuse</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F60B019596B12932B1AB27288792B38CC4E4E034</key>
 		<string>https://github.com/michaelx11/MainMuseApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MainMuse.xcodeproj/project.xcworkspace</string>
+	<string>MainMuse.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F60B019596B12932B1AB27288792B38CC4E4E034</key>
