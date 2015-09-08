@@ -52,7 +52,6 @@ class MessageEditorViewController: UIViewController {
             return;
         }
         lock = true;
-        println("CALLED");
         var messageData : MessageData = MessageData();
         messageData.subject = self.subjectTextView.text;
         messageData.body = self.bodyTextView.text;

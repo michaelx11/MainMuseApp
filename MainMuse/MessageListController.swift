@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageListController: UIViewController {
+class MessageListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var friendName : String!;
     var friendId : String!;
@@ -30,6 +30,10 @@ class MessageListController: UIViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
+        messageTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        // Remove auto-padding for UITextViews
+        self.automaticallyAdjustsScrollViewInsets = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +78,6 @@ class MessageListController: UIViewController {
                 self.messageList = [];
                 for index : String in sortedKeys {
                     if let base64Message : String = messages[index] as? String {
-                        println(base64Message)
                         if let tempMessage = MessageData(messageIndex: index, base64: base64Message) {
                             self.messageList.append(tempMessage)
                         } else {
@@ -100,8 +103,9 @@ class MessageListController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! UITableViewCell;
         
-        let messageLabel : UILabel = cell.contentView.viewWithTag(1) as! UILabel;
-        let editButton : FriendButton = cell.contentView.viewWithTag(2) as! FriendButton;
+        let subjectTextView: UITextView = cell.contentView.viewWithTag(1) as! UITextView
+        let bodyTextView: UITextView = cell.contentView.viewWithTag(2) as! UITextView
+        let editButton: FriendButton = cell.contentView.viewWithTag(3) as! FriendButton;
         
         
         if (indexPath.row >= messageList.count) {
@@ -117,7 +121,15 @@ class MessageListController: UIViewController {
         
         
         let message : MessageData = messageList[indexPath.row];
-        messageLabel.text = "\(message.index). \(message.subject)";
+        subjectTextView.text = "\(message.index). \(message.subject)";
+        bodyTextView.text = message.body
+        
+        // Need to be editable / selectable to allow font resizing, make them uneditable after
+        subjectTextView.editable = false
+        bodyTextView.editable = false
+        subjectTextView.selectable = false
+        bodyTextView.selectable = false
+        
         editButton.index = message.index;
         editButton.message = message;
         
@@ -135,6 +147,10 @@ class MessageListController: UIViewController {
         */
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 160.0
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
