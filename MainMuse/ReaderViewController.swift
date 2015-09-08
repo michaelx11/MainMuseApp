@@ -70,19 +70,32 @@ class ReaderViewController: UIViewController {
                 println("JSON Error \(err!.localizedDescription)")
                 return;
             }
+
+            var didEncounterError = false
             if (jsonResult["error"] != nil) {
-                println(jsonResult["error"]);
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.subjectLabel.text = "Couldn't obtain message.";
-                    self.textView.text = "Perhaps no messages have been sent!";
-                })
+                println(jsonResult["error"])
+                didEncounterError = true
             } else {
-                let message : NSDictionary = jsonResult["message"] as! NSDictionary;
+                if let base64Message : String = jsonResult["message"] as? String {
+                    println(base64Message)
+                    if let tempMessage = MessageData(messageIndex: "", base64: base64Message) {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.subjectLabel.text = tempMessage.subject;
+                            self.textView.text = tempMessage.body;
+                        })
+                    } else {
+                        didEncounterError = true
+                    }
+                } else {
+                    didEncounterError = true
+                }
                 
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.subjectLabel.text = message["subject"] as? String;
-                    self.textView.text = message["body"] as! String;
-                })
+                if (didEncounterError) {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.subjectLabel.text = "Couldn't obtain message.";
+                        self.textView.text = "Perhaps no messages have been sent!";
+                    })
+                }
             }
         })
         task.resume()

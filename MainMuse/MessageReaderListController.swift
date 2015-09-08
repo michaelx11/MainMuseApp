@@ -74,13 +74,14 @@ class MessageReaderListController: UIViewController {
                 let sortedKeys = keys.sorted(>).map({"\($0)"});
                 
                 self.messageList = [];
-                for index in sortedKeys {
-                    var message : NSDictionary = messages[index] as! NSDictionary;
-                    var tempMessage = MessageData();
-                    tempMessage.index = index;
-                    tempMessage.subject = message["subject"] as! String;
-                    tempMessage.body = message["body"] as! String;
-                    self.messageList.append(tempMessage);
+                for index : String in sortedKeys {
+                    if let base64Message : String = messages[index] as? String {
+                        if let tempMessage = MessageData(messageIndex: index, base64: base64Message) {
+                            self.messageList.append(tempMessage)
+                        } else {
+                            println("Error: couldn't parse message")
+                        }
+                    }
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), {
