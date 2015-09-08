@@ -8,7 +8,8 @@
 
 import UIKit
 
-class MessageListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+// Note: UITextViewDelegate to capture taps on subjectTextView without allowing editing
+class MessageListController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     var friendName : String!;
     var friendId : String!;
@@ -105,46 +106,23 @@ class MessageListController: UIViewController, UITableViewDataSource, UITableVie
         
         let subjectTextView: UITextView = cell.contentView.viewWithTag(1) as! UITextView
         let bodyTextView: UITextView = cell.contentView.viewWithTag(2) as! UITextView
-        let editButton: FriendButton = cell.contentView.viewWithTag(3) as! FriendButton;
-        
         
         if (indexPath.row >= messageList.count) {
             return cell;
         }
         
-        if (indexPath.row == 0) {
-            editButton.tintColor = UIColor.grayColor();
-//            cell.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.8, alpha: 0.5);
-//            cell.backgroundColor = UIColor(red: 178, green: 190, blue: 181, alpha: 1.0);
-//            cell.backgroundColor = UIColor.blueColor();
-        }
-        
+        // Catch tap events
+        subjectTextView.delegate = self
         
         let message : MessageData = messageList[indexPath.row];
         subjectTextView.text = "\(message.index). \(message.subject)";
         bodyTextView.text = message.body
         
         // Need to be editable / selectable to allow font resizing, make them uneditable after
-        subjectTextView.editable = false
+        // subjectTextView is editable to capture tap events
         bodyTextView.editable = false
-        subjectTextView.selectable = false
+//        subjectTextView.selectable = false
         bodyTextView.selectable = false
-        
-        editButton.index = message.index;
-        editButton.message = message;
-        
-        /*
-        if (firstView) {
-            var yOffset : CGFloat = 0;
-            
-            if (tableView.contentSize.height > tableView.bounds.size.height) {
-                yOffset = tableView.contentSize.height - tableView.bounds.size.height;
-            }
-            var bottom: CGPoint = CGPoint(x: 0, y: yOffset)
-            tableView.setContentOffset(bottom, animated: false)
-            firstView = false
-        }
-        */
         
         return cell
     }
@@ -153,13 +131,35 @@ class MessageListController: UIViewController, UITableViewDataSource, UITableVie
         return 160.0
     }
     
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        // Determine which row was picked
+        let pointInTable: CGPoint = textView.convertPoint(textView.bounds.origin, toView:messageTable)
+        let indexPath: NSIndexPath = messageTable.indexPathForRowAtPoint(pointInTable)!
+        
+        if indexPath.row < 0 || indexPath.row >= messageList.count {
+            return false
+        }
+        
+        // Set appropriate data before segue
+        localData.targetUserId = friendId
+        localData.editType = "edit"
+        localData.messageIndex = messageList[indexPath.row].index
+        localData.editingMessage = messageList[indexPath.row]
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.performSegueWithIdentifier("editMessageSegue", sender: self)
+        })
+        return false
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "editMessageSegue") {
-            let senderButton : FriendButton = sender as! FriendButton;
-            localData.targetUserId = friendId;
-            localData.editType = "edit";
-            localData.messageIndex = senderButton.index;
-            localData.editingMessage = senderButton.message;
+            // do nothing
+//            let senderButton : FriendButton = sender as! FriendButton;
+//            localData.targetUserId = friendId;
+//            localData.editType = "edit";
+//            localData.messageIndex = senderButton.index;
+//            localData.editingMessage = senderButton.message;
         } else if (segue.identifier == "addMessageSegue") {
             localData.targetUserId = friendId;
             localData.editType = "append";
