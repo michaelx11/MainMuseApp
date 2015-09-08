@@ -96,7 +96,6 @@ class MessageListController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section:    Int) -> Int {
-        println("Count is \(messageList.count)");
         return messageList.count
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageReaderListController: UIViewController {
+class MessageReaderListController: UIViewController, UITableViewDelegate {
     
     var friendName : String!;
     var friendId : String!;
@@ -92,6 +92,15 @@ class MessageReaderListController: UIViewController {
         task.resume();
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("SELECTED")
+        dispatch_async(dispatch_get_main_queue(), {
+            self.localData.messageIndex = self.messageList[indexPath.row].index
+            self.localData.editingMessage = self.messageList[indexPath.row]
+            self.performSegueWithIdentifier("readMessageSegue", sender: self)
+        })
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section:    Int) -> Int {
         return messageList.count
     }
@@ -101,7 +110,6 @@ class MessageReaderListController: UIViewController {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! UITableViewCell;
         
         let messageLabel : UILabel = cell.contentView.viewWithTag(1) as! UILabel;
-        let readButton : FriendButton = cell.contentView.viewWithTag(2) as! FriendButton;
         
         if (indexPath.row >= messageList.count) {
             return cell;
@@ -109,23 +117,18 @@ class MessageReaderListController: UIViewController {
         
         let message : MessageData = messageList[indexPath.row];
         messageLabel.text = "\(message.index). \(message.subject)";
-        readButton.index = message.index;
-        readButton.message = message;
         
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "readMessageSegue") {
-            let uiButton : FriendButton = sender as! FriendButton;
             let readerViewController : ReaderViewController = segue.destinationViewController as! ReaderViewController;
             readerViewController.friendId = self.friendId;
             readerViewController.friendName = self.friendName;
             readerViewController.myToken = self.myToken;
             readerViewController.myId = self.myId;
             readerViewController.isLandingPage = false;
-            localData.messageIndex = uiButton.index;
-            localData.editingMessage = uiButton.message;
         }
     }
     
