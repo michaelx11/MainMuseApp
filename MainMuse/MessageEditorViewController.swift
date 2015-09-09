@@ -58,46 +58,59 @@ class MessageEditorViewController: UIViewController, UIAlertViewDelegate {
         var messageData : MessageData = MessageData();
         messageData.subject = self.subjectTextView.text;
         messageData.body = self.bodyTextView.text;
-        
+
         var messageJSON : String = messageData.toJsonString();
-        
-        var rawPath : String = "http://\(HOST)/\(localData.editType)message?id=\(localData.localId)&token=\(localData.appAccessToken)&targetid=\(localData.targetUserId)&message=\(messageJSON)&index=\(localData.messageIndex)";
-        let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
-        println(urlPath);
-        let url = NSURL(string: urlPath)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            if(error != nil) {
-                // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
-                return;
-            }
-            var err: NSError?
-            
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
-            if(err != nil) {
-                // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
-                return;
-            }
-            if (jsonResult["error"] != nil) {
-                println(jsonResult["error"]);
+
+        var error : NSError?
+
+        var sessionConfig : NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        var session : NSURLSession = NSURLSession(configuration: sessionConfig)
+        let url = NSURL(string: "http://\(HOST)/\(localData.editType)message")
+        var request : NSMutableURLRequest = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60.0)
+
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        request.HTTPMethod = "POST"
+
+        let mapData : AnyObject = ["id": localData.localId, "token": localData.appAccessToken, "targetid": localData.targetUserId, "message": messageJSON, "index": localData.messageIndex]
+
+        let postData : NSData = NSJSONSerialization.dataWithJSONObject(mapData, options: NSJSONWritingOptions.allZeros, error: &error)!
+        request.HTTPBody = postData
+
+        let postDataTask : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: {(data : NSData!, resp : NSURLResponse!, error : NSError!) in
+
+            if let err = error {
+                self.lock = false
             } else {
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                if (self.localData.editType == "append") {
-                    println("Trying to call segue now");
-                    self.performSegueWithIdentifier("unwindAfterAppendSegue", sender: self);
+                var err2: NSError?
+
+                var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err2) as! NSDictionary
+                if(err2 != nil) {
+                    // If there is an error parsing JSON, print it to the console
+                    println("JSON Error \(err2!.localizedDescription)")
+                    self.lock = false
+                    return
+                }
+                if (jsonResult["error"] != nil) {
+                    println(jsonResult["error"]);
+                    self.lock = false
                 } else {
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.showSavedAlert()
-                    })
+                        if (self.localData.editType == "append") {
+                            println("Trying to call segue now");
+                            self.performSegueWithIdentifier("unwindAfterAppendSegue", sender: self);
+                        } else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.showSavedAlert()
+                            })
+                        }
+                        self.lock = false;
+                    });
                 }
-                self.lock = false;
-            });
+            }
         })
-        task.resume();
+        postDataTask.resume()
     }
     
     func showSavedAlert() {
