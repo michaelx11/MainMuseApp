@@ -53,31 +53,31 @@ class ReaderViewController: UIViewController {
         }
         var rawPath : String = "http://" + HOST + "/readmessage?id=" + localData.localId + "&token=" + localData.appAccessToken + "&sourceid=" + friendId;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
-        println(urlPath);
+        print(urlPath);
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription)
                 return;
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
+            var jsonResult : NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
+                print("JSON Error \(err!.localizedDescription)")
                 return;
             }
 
             var didEncounterError = false
             if (jsonResult["error"] != nil) {
-                println(jsonResult["error"])
+                print(jsonResult["error"])
                 didEncounterError = true
             } else {
                 if let base64Message : String = jsonResult["message"] as? String {
-                    println(base64Message)
+                    print(base64Message)
                     if let tempMessage = MessageData(messageIndex: "", base64: base64Message) {
                         dispatch_async(dispatch_get_main_queue(), {
                             self.subjectLabel.text = tempMessage.subject;

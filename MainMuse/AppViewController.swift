@@ -40,24 +40,24 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func getUserData(id: String, token: String) {
-        var rawPath : String = "http://" + (HOST as String) + "/getuserdata?id=" + id + "&token=" + (token as String);
+        let rawPath : String = "http://" + (HOST as String) + "/getuserdata?id=" + id + "&token=" + (token as String);
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
-        println(urlPath);
+        print(urlPath);
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            println("Task completed")
+            print("Task completed")
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription)
                 return;
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
+            var jsonResult : NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
+                print("JSON Error \(err!.localizedDescription)")
                 return;
             }
             if (jsonResult["error"] == nil) {
@@ -67,7 +67,7 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     self.refreshControl.endRefreshing();
                 });
             } else {
-                println(jsonResult["error"]);
+                print(jsonResult["error"]);
             }
         })
         
@@ -107,7 +107,7 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let progressBar : UIProgressView = cell.contentView.viewWithTag(3) as! UIProgressView
         let progressLabel : UILabel = cell.contentView.viewWithTag(4) as! UILabel
         let nameLabel : UILabel = cell.contentView.viewWithTag(5) as! UILabel
-        var profileImage : UIImageView = cell.contentView.viewWithTag(6) as! UIImageView
+        let profileImage : UIImageView = cell.contentView.viewWithTag(6) as! UIImageView
         // Circular view
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = 30.0
@@ -139,13 +139,19 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
             let profileURL : NSURL = NSURL(string: "http://graph.facebook.com/\(friend.friendId)/picture")!
 
             var error : NSError?
-            if let profileImageData = NSData(contentsOfURL: profileURL, options: nil, error: &error) {
+            do {
+                let profileImageData = try NSData(contentsOfURL: profileURL, options: [])
                 dispatch_sync(dispatch_get_main_queue(), {
                     profileImage.image = UIImage(data: profileImageData, scale: 1.0)
                     return
                 })
-            } else if let err = error {
-                println(err.userInfo)
+            } catch let error1 as NSError {
+                error = error1
+                if let err = error {
+                    print(err.userInfo)
+                }
+            } catch {
+                fatalError()
             }
         })
         

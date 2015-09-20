@@ -10,6 +10,12 @@
 		F415D0AC1B65278A00DB18F7 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415D0AB1B65278A00DB18F7 /* RequestManager.swift */; };
 		F41EA3341AB20424005289A7 /* MessageReaderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EA3331AB20424005289A7 /* MessageReaderListController.swift */; };
 		F41EA3361AB22250005289A7 /* LocalMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */; };
+		F49DB4AF1BAE533A00C10815 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49DB4A91BAE533A00C10815 /* Bolts.framework */; };
+		F49DB4B01BAE533A00C10815 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49DB4AA1BAE533A00C10815 /* FBAudienceNetwork.framework */; };
+		F49DB4B11BAE533A00C10815 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49DB4AB1BAE533A00C10815 /* FBSDKCoreKit.framework */; };
+		F49DB4B21BAE533A00C10815 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49DB4AC1BAE533A00C10815 /* FBSDKLoginKit.framework */; };
+		F49DB4B31BAE533A00C10815 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49DB4AD1BAE533A00C10815 /* FBSDKMessengerShareKit.framework */; };
+		F49DB4B41BAE533A00C10815 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49DB4AE1BAE533A00C10815 /* FBSDKShareKit.framework */; };
 		F4A12D521A5E0D87004630BB /* FriendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D511A5E0D87004630BB /* FriendData.swift */; };
 		F4A12D541A5E6925004630BB /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D531A5E6925004630BB /* MessageData.swift */; };
 		F4A12D561A5E82BD004630BB /* MessageEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */; };
@@ -18,7 +24,6 @@
 		F4D9B4461A58C81900F28DEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D9B4451A58C81900F28DEB /* Images.xcassets */; };
 		F4D9B4491A58C81900F28DEB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D9B4471A58C81900F28DEB /* LaunchScreen.xib */; };
 		F4D9B4551A58C81900F28DEB /* MainMuseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4541A58C81900F28DEB /* MainMuseTests.swift */; };
-		F4D9B45F1A58C84700F28DEB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D9B45E1A58C84700F28DEB /* FacebookSDK.framework */; };
 		F4D9B4681A5A136C00F28DEB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4671A5A136C00F28DEB /* LoginViewController.swift */; };
 		F4D9B46A1A5A137700F28DEB /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B4691A5A137700F28DEB /* AppViewController.swift */; };
 		F4D9B46C1A5A36E200F28DEB /* MessageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B46B1A5A36E200F28DEB /* MessageListController.swift */; };
@@ -45,6 +50,12 @@
 		F415D0AB1B65278A00DB18F7 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestManager.swift; path = ../RequestManager.swift; sourceTree = "<group>"; };
 		F41EA3331AB20424005289A7 /* MessageReaderListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageReaderListController.swift; sourceTree = "<group>"; };
 		F41EA3351AB22250005289A7 /* LocalMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalMessageViewController.swift; path = ../LocalMessageViewController.swift; sourceTree = "<group>"; };
+		F49DB4A91BAE533A00C10815 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../FacebookSDKs-iOS-20150910 (1)/Bolts.framework"; sourceTree = "<group>"; };
+		F49DB4AA1BAE533A00C10815 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = "../FacebookSDKs-iOS-20150910 (1)/FBAudienceNetwork.framework"; sourceTree = "<group>"; };
+		F49DB4AB1BAE533A00C10815 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../FacebookSDKs-iOS-20150910 (1)/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		F49DB4AC1BAE533A00C10815 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../FacebookSDKs-iOS-20150910 (1)/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		F49DB4AD1BAE533A00C10815 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = "../FacebookSDKs-iOS-20150910 (1)/FBSDKMessengerShareKit.framework"; sourceTree = "<group>"; };
+		F49DB4AE1BAE533A00C10815 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../FacebookSDKs-iOS-20150910 (1)/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		F4A12D511A5E0D87004630BB /* FriendData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendData.swift; sourceTree = "<group>"; };
 		F4A12D531A5E6925004630BB /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		F4A12D551A5E82BD004630BB /* MessageEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageEditorViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +87,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4D9B45F1A58C84700F28DEB /* FacebookSDK.framework in Frameworks */,
+				F49DB4AF1BAE533A00C10815 /* Bolts.framework in Frameworks */,
+				F49DB4B01BAE533A00C10815 /* FBAudienceNetwork.framework in Frameworks */,
+				F49DB4B11BAE533A00C10815 /* FBSDKCoreKit.framework in Frameworks */,
+				F49DB4B21BAE533A00C10815 /* FBSDKLoginKit.framework in Frameworks */,
+				F49DB4B31BAE533A00C10815 /* FBSDKMessengerShareKit.framework in Frameworks */,
+				F49DB4B41BAE533A00C10815 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +109,12 @@
 		F4D9B4301A58C81900F28DEB = {
 			isa = PBXGroup;
 			children = (
+				F49DB4A91BAE533A00C10815 /* Bolts.framework */,
+				F49DB4AA1BAE533A00C10815 /* FBAudienceNetwork.framework */,
+				F49DB4AB1BAE533A00C10815 /* FBSDKCoreKit.framework */,
+				F49DB4AC1BAE533A00C10815 /* FBSDKLoginKit.framework */,
+				F49DB4AD1BAE533A00C10815 /* FBSDKMessengerShareKit.framework */,
+				F49DB4AE1BAE533A00C10815 /* FBSDKShareKit.framework */,
 				F4D9B45E1A58C84700F28DEB /* FacebookSDK.framework */,
 				F4D9B43B1A58C81900F28DEB /* MainMuse */,
 				F4D9B4511A58C81900F28DEB /* MainMuseTests */,
@@ -207,6 +229,8 @@
 		F4D9B4311A58C81900F28DEB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Michael Xu";
 				TargetAttributes = {

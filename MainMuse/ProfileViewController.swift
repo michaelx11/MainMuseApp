@@ -8,49 +8,38 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, FBLoginViewDelegate {
+class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    
-    
-    @IBOutlet var fbLogoutView : FBLoginView!;
     @IBOutlet var nameLabel : UILabel!;
     
     let localData : AppLocalData = AppLocalData.sharedInstance
-    
-    
+    var loginView : FBSDKLoginButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("DID LOAD");
+        print("DID LOAD");
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.fbLogoutView.delegate = self;
-        self.fbLogoutView.readPermissions = ["public_profile", "email", "user_friends"];
+        if loginView == nil {
+            loginView = FBSDKLoginButton()
+            self.view.addSubview(loginView)
+            loginView.center = self.view.center
+            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.delegate = self
+        }
+        
         self.nameLabel.text = String(localData.fullName);
     }
     
     // Facebook Delegate Methods
     
-    func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
-        println("User Logged In");
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User shouldn't get here")
     }
     
-    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
-        println("User: \(user)");
-        println("User ID: \(user.objectID)");
-        println("User Name: \(user.name)");
-        var userEmail = user.objectForKey("email") as! String;
-        println("User Email: \(userEmail)");
-    }
-    
-    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
-        println("User Logged Out");
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         performSegueWithIdentifier("loggedOutSegue", sender: self)
-    }
-    
-    func loginView(loginView: FBLoginView!, handleError: NSError) {
-        println("Error: \(handleError.localizedDescription)");
-    }
-    
+    }    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

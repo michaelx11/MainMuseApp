@@ -47,13 +47,13 @@ class AddFriendViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     func generateQRCode() {
         let data = localData.localFriendCode.dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
         
-        let filter = CIFilter(name: "CIQRCodeGenerator")
-        filter.setValue(data, forKey: "inputMessage")
-        filter.setValue("Q", forKey: "inputCorrectionLevel")
+        let filter : CIFilter? = CIFilter(name: "CIQRCodeGenerator")
+        filter?.setValue(data, forKey: "inputMessage")
+        filter?.setValue("Q", forKey: "inputCorrectionLevel")
         
-        let inputImage : CIImage = filter.outputImage
+        let inputImage : CIImage? = filter?.outputImage
         let affineTransform : CGAffineTransform = CGAffineTransformMakeScale(5.0, 5.0)
-        qrcodeImage = inputImage.imageByApplyingTransform(affineTransform)
+        qrcodeImage = inputImage?.imageByApplyingTransform(affineTransform)
         
         dispatch_async(dispatch_get_main_queue(), {
             self.qrCodeView.image = UIImage(CIImage: self.qrcodeImage)
@@ -66,10 +66,16 @@ class AddFriendViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
         var error: NSError?
-        let input: AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(captureDevice, error: &error)
+        let input: AnyObject!
+        do {
+            input = try AVCaptureDeviceInput(device: captureDevice)
+        } catch let error1 as NSError {
+            error = error1
+            input = nil
+        }
         
         if (error != nil) {
-            println("\(error?.localizedDescription)")
+            print("\(error?.localizedDescription)")
             return
         }
         
@@ -89,7 +95,7 @@ class AddFriendViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         videoPreviewLayer?.frame = scannerView.layer.bounds
-        scannerView.layer.addSublayer(videoPreviewLayer)
+        scannerView.layer.addSublayer(videoPreviewLayer!)
         
         // Start capture
         captureSession?.startRunning()
@@ -149,25 +155,25 @@ class AddFriendViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     func addFriend(friendCode : String) {
         var rawPath : String = "http://" + HOST + "/addfriend?id=" + localData.localId + "&token=" + localData.appAccessToken + "&friendcode=" + friendCode;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
-        println(urlPath);
+        print(urlPath);
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            println("Task completed")
+            print("Task completed")
             if(error != nil) {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.showErrorAlert("Couldn't reach server!")
                 })
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription)
                 return;
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
+            var jsonResult : NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
+                print("JSON Error \(err!.localizedDescription)")
                 return;
             }
             if (jsonResult["error"] != nil) {

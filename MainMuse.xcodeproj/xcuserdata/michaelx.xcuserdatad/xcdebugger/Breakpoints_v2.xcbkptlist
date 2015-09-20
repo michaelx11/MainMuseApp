@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/AppViewController.swift"
-            timestampString = "463359454.522042"
+            timestampString = "464421245.643152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/LoginViewController.swift"
-            timestampString = "463356450.578888"
+            timestampString = "464424957.301504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/LoginViewController.swift"
-            timestampString = "463356450.578888"
+            timestampString = "464424957.301504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -145,6 +145,86 @@
             endingLineNumber = "81"
             landmarkName = "getMessages()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MainMuse/LoginViewController.swift"
+            timestampString = "464424957.301504"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "fetchUserData()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MainMuse/LoginViewController.swift"
+            timestampString = "464424957.301504"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MainMuse/LoginViewController.swift"
+            timestampString = "464424957.301504"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MainMuse.LoginViewController.(verifyUserAndSegue (MainMuse.LoginViewController) -&gt; (Swift.String, name : Swift.String, email : Swift.String, accessToken : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "MainMuse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelx/Documents/iOSdev/MainMuse/MainMuse/LoginViewController.swift"
+                  timestampString = "464424958.33451"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "1632">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MainMuse.LoginViewController.(verifyUserAndSegue (MainMuse.LoginViewController) -&gt; (Swift.String, name : Swift.String, email : Swift.String, accessToken : Swift.String) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "MainMuse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelx/Documents/iOSdev/MainMuse/MainMuse/LoginViewController.swift"
+                  timestampString = "464424958.334802"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

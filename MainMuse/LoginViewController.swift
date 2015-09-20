@@ -8,11 +8,9 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, FBLoginViewDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-
-    
-    @IBOutlet var fbLoginView : FBLoginView!
+    var loginView : FBSDKLoginButton!
     @IBOutlet var textView : UITextView!
     
     var fetchedUserInfo = false
@@ -20,49 +18,87 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("DID LOAD");
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.fbLoginView.delegate = self;
-        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"];
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            // User is already logged in, do work such as go to next view controller.
+        }
+        else
+        {
+            loginView = FBSDKLoginButton()
+            self.view.addSubview(loginView)
+            loginView.center = self.view.center
+            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.delegate = self
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Reset this flag
+        print("DID RESET THIS FLAG")
+        if (FBSDKAccessToken.currentAccessToken() == nil) {
+            self.fetchedUserInfo = false
+            localData.verified = false
+        }
     }
     
     // Facebook Delegate Methods
     
-    func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
-        println("User Logged In");
-
-    }
-    
-    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
-
-        println("User: \(user)");
-        println("User ID: \(user.objectID)");
-        println("User Name: \(user.name)");
-        var userEmail = user.objectForKey("email") as! String;
-        println("User Email: \(userEmail)");
-
-        localData.accessToken = FBSession.activeSession().accessTokenData.accessToken;
-        localData.localId = user.objectID;
-        localData.fullName = user.name;
-        localData.localEmail = userEmail;
-        println(localData.accessToken);
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
         
-        if (!fetchedUserInfo) {
-            verifyUserAndSegue(localData.localId, name: localData.fullName, email: localData.localEmail, accessToken: localData.accessToken);
-            fetchedUserInfo = true;
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email") && result.grantedPermissions.contains("public_profile") && result.grantedPermissions.contains("user_friends")
+            {
+                localData.accessToken = result.token.tokenString
+                fetchUserData()
+                // Do work
+                print(result)
+            }
         }
     }
     
-    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
-        println("User Logged Out");
-        fetchedUserInfo = false;
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
     
-    func loginView(loginView: FBLoginView!, handleError: NSError) {
-        println("Error: \(handleError.localizedDescription)");
+    func fetchUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email"])
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                let fullName : NSString = result.valueForKey("name") as! NSString
+                let userEmail : NSString = result.valueForKey("email") as! NSString
+                let objectId : NSString = result.valueForKey("id") as! NSString
+                self.localData.localId = objectId as String
+                self.localData.fullName = fullName as String
+                self.localData.localEmail = userEmail as String
+                
+                if (!self.fetchedUserInfo) {
+                    self.verifyUserAndSegue(self.localData.localId, name: self.localData.fullName, email: self.localData.localEmail, accessToken: self.localData.accessToken);
+                    self.fetchedUserInfo = true;
+                }
+            }
+        })
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,36 +110,36 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
             return;
         }
         
-        var rawPath : String = "http://" + HOST + "/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
+        let rawPath : String = "http://" + HOST + "/initializeuser?id=" + id + "&token=" + accessToken + "&name=" + name + "&email=" + email;
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
-        println(urlPath);
+        print(urlPath);
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            println("Task completed")
+            print("Task completed")
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription)
                 return;
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
+            let jsonResult : NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
+                print("JSON Error \(err!.localizedDescription)")
             }
-            println(jsonResult);
+            print(jsonResult);
             
             dispatch_async(dispatch_get_main_queue(), {
                 if (jsonResult["accesstoken"] != nil) {
 
                     self.localData.appAccessToken = jsonResult["accesstoken"] as! String;
-                    println(self.localData.appAccessToken);
+                    print(self.localData.appAccessToken);
                     self.localData.verified = true;
                     self.performSegueWithIdentifier("loggedInSegue", sender: self);
                 } else {
-                    println(jsonResult["error"]);
+                    print(jsonResult["error"]);
                 }
             });
 

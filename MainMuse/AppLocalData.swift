@@ -51,22 +51,22 @@ class AppLocalData {
             let queues : NSDictionary = userObj["queues"] as! NSDictionary;
             for (id, obj) in queues {
                 let syncObject : NSDictionary = obj["sync"] as! NSDictionary;
-                println(syncObject);
+                print(syncObject);
                 if (syncObject["status"] as! String != "accepted") {
                     continue;
                 }
                 
-                var tempData = FriendData();
+                let tempData = FriendData();
                 tempData.friendId = id as! NSString as String;
                 tempData.friendName = syncObject["name"] as! String;
                 let timestampObj: AnyObject? = syncObject["timestamp"];
                 let intervalObj: AnyObject? = syncObject["interval"];
-                var timestamp : Int64 = timestampObj!.longLongValue;
-                var interval : Int64 = intervalObj!.longLongValue;
-                var head : NSInteger = syncObject["head"] as! NSInteger;
-                var tail : NSInteger = syncObject["tail"] as! NSInteger;
-                var currentTime : Double = (NSDate().timeIntervalSince1970);
-                var currentTimeInt : Int64 = Int64(currentTime * 1000.0);
+                let timestamp : Int64 = timestampObj!.longLongValue;
+                let interval : Int64 = intervalObj!.longLongValue;
+                let head : NSInteger = syncObject["head"] as! NSInteger;
+                let tail : NSInteger = syncObject["tail"] as! NSInteger;
+                let currentTime : Double = (NSDate().timeIntervalSince1970);
+                let currentTimeInt : Int64 = Int64(currentTime * 1000.0);
                 
                 tempData.newMessage = (currentTimeInt - Int64(timestamp) >= Int64(interval)) && (head < tail);
                 tempData.progress = (Double(currentTimeInt - timestamp)) / (Double(interval));
@@ -74,11 +74,11 @@ class AppLocalData {
                     tempData.progress = 1.0;
                 }
                 
-                println(tempData.friendId)
-                println(tempData)
+                print(tempData.friendId)
+                print(tempData)
                 friendsList.append(tempData);
             }
-            friendsList.sort(sortUserFunc);
+            friendsList.sortInPlace(sortUserFunc);
         }
     }
 }

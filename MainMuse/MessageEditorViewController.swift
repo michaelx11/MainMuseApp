@@ -55,18 +55,18 @@ class MessageEditorViewController: UIViewController, UIAlertViewDelegate {
             return;
         }
         lock = true;
-        var messageData : MessageData = MessageData();
+        let messageData : MessageData = MessageData();
         messageData.subject = self.subjectTextView.text;
         messageData.body = self.bodyTextView.text;
 
-        var messageJSON : String = messageData.toJsonString();
+        let messageJSON : String = messageData.toJsonString();
 
         var error : NSError?
 
-        var sessionConfig : NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        var session : NSURLSession = NSURLSession(configuration: sessionConfig)
+        let sessionConfig : NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session : NSURLSession = NSURLSession(configuration: sessionConfig)
         let url = NSURL(string: "http://\(HOST)/\(localData.editType)message")
-        var request : NSMutableURLRequest = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60.0)
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60.0)
 
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -75,30 +75,30 @@ class MessageEditorViewController: UIViewController, UIAlertViewDelegate {
 
         let mapData : AnyObject = ["id": localData.localId, "token": localData.appAccessToken, "targetid": localData.targetUserId, "message": messageJSON, "index": localData.messageIndex]
 
-        let postData : NSData = NSJSONSerialization.dataWithJSONObject(mapData, options: NSJSONWritingOptions.allZeros, error: &error)!
+        let postData : NSData = try! NSJSONSerialization.dataWithJSONObject(mapData, options: NSJSONWritingOptions())
         request.HTTPBody = postData
 
-        let postDataTask : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: {(data : NSData!, resp : NSURLResponse!, error : NSError!) in
+        let postDataTask : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: {(data : NSData?, resp : NSURLResponse?, error : NSError?) in
 
-            if let err = error {
+            if let _ = error {
                 self.lock = false
             } else {
                 var err2: NSError?
 
-                var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err2) as! NSDictionary
+                let jsonResult : NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
                 if(err2 != nil) {
                     // If there is an error parsing JSON, print it to the console
-                    println("JSON Error \(err2!.localizedDescription)")
+                    print("JSON Error \(err2!.localizedDescription)")
                     self.lock = false
                     return
                 }
                 if (jsonResult["error"] != nil) {
-                    println(jsonResult["error"]);
+                    print(jsonResult["error"]);
                     self.lock = false
                 } else {
                     dispatch_async(dispatch_get_main_queue(), {
                         if (self.localData.editType == "append") {
-                            println("Trying to call segue now");
+                            print("Trying to call segue now");
                             self.performSegueWithIdentifier("unwindAfterAppendSegue", sender: self);
                         } else {
                             dispatch_async(dispatch_get_main_queue(), {

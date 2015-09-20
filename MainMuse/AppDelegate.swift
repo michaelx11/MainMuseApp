@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Preload keyboard to prevent lag
-        var dummyField : UITextField = UITextField();
+        let dummyField : UITextField = UITextField();
         dummyField.becomeFirstResponder();
         dummyField.resignFirstResponder();
         dummyField.removeFromSuperview();
@@ -26,9 +26,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication);
-        return wasHandled;
+//    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+////        let wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication);
+//        return wasHandled;
+//    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject) -> Bool {
+            return FBSDKApplicationDelegate.sharedInstance().application(
+                application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {

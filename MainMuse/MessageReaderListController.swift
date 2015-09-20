@@ -45,33 +45,33 @@ class MessageReaderListController: UIViewController, UITableViewDelegate {
     }
     
     func getMessages() {
-        var rawPath : String = "http://\(HOST)/getmessagesfrom?id=\(localData.localId)&token=\(localData.appAccessToken)&sourceid=\(friendId)";
+        let rawPath : String = "http://\(HOST)/getmessagesfrom?id=\(localData.localId)&token=\(localData.appAccessToken)&sourceid=\(friendId)";
         let urlPath : String = rawPath.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!;
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription)
                 return;
             }
             var err: NSError?
             
-            var jsonResult : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
+            var jsonResult : NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
+                print("JSON Error \(err!.localizedDescription)")
                 return;
             }
             if (jsonResult["error"] != nil) {
-                println(jsonResult["error"]);
+                print(jsonResult["error"]);
             } else {
                 let messages : NSDictionary = jsonResult["messages"] as! NSDictionary;
                 var keys : [NSInteger] = [];
                 for (index, message) in messages {
                     keys.append(index.integerValue);
                 }
-                let sortedKeys = keys.sorted(>).map({"\($0)"});
+                let sortedKeys = keys.sort(>).map({"\($0)"});
                 
                 self.messageList = [];
                 for index : String in sortedKeys {
@@ -79,7 +79,7 @@ class MessageReaderListController: UIViewController, UITableViewDelegate {
                         if let tempMessage = MessageData(messageIndex: index, base64: base64Message) {
                             self.messageList.append(tempMessage)
                         } else {
-                            println("Error: couldn't parse message")
+                            print("Error: couldn't parse message")
                         }
                     }
                 }
@@ -93,7 +93,7 @@ class MessageReaderListController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("SELECTED")
+        print("SELECTED")
         dispatch_async(dispatch_get_main_queue(), {
             self.localData.messageIndex = self.messageList[indexPath.row].index
             self.localData.editingMessage = self.messageList[indexPath.row]
@@ -107,7 +107,7 @@ class MessageReaderListController: UIViewController, UITableViewDelegate {
     
     var firstView = true;
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! UITableViewCell;
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) ;
         
         let messageLabel : UILabel = cell.contentView.viewWithTag(1) as! UILabel;
         
@@ -134,7 +134,7 @@ class MessageReaderListController: UIViewController, UITableViewDelegate {
     
     
     @IBAction func unwindWhenMessageAppended(segue: UIStoryboardSegue) {
-        println("Segue is happening!");
+        print("Segue is happening!");
     }
     
 }
