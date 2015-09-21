@@ -24,6 +24,9 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged);
         friendsTableView.addSubview(refreshControl);
         friendsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        // Fix whitespace at top of tableview
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     func obtainData() {
@@ -136,7 +139,7 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         // Grab that profile image asynchronously
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
-            let profileURL : NSURL = NSURL(string: "http://graph.facebook.com/\(friend.friendId)/picture")!
+            let profileURL : NSURL = NSURL(string: "https://graph.facebook.com/\(friend.friendId)/picture")!
 
             var error : NSError?
             do {
