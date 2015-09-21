@@ -23,6 +23,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
+            print("Already logged in!")
+            localData.accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+            fetchUserData()
         }
         else
         {
@@ -36,7 +39,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         // Reset this flag
-        print("DID RESET THIS FLAG")
         if (FBSDKAccessToken.currentAccessToken() == nil) {
             self.fetchedUserInfo = false
             localData.verified = false
@@ -51,9 +53,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if ((error) != nil)
         {
             // Process error
+            print(error)
         }
         else if result.isCancelled {
             // Handle cancellations
+            print("Result was cancelled")
         }
         else {
             // If you ask for multiple permissions at once, you
@@ -61,6 +65,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email") && result.grantedPermissions.contains("public_profile") && result.grantedPermissions.contains("user_friends")
             {
                 localData.accessToken = result.token.tokenString
+                print(result.token.expirationDate)
                 fetchUserData()
                 // Do work
                 print(result)

@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/LoginViewController.swift"
-            timestampString = "464424957.301504"
+            timestampString = "464492936.420925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/LoginViewController.swift"
-            timestampString = "464424957.301504"
+            timestampString = "464492936.420925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -150,15 +150,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/LoginViewController.swift"
-            timestampString = "464424957.301504"
+            timestampString = "464492936.420925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "fetchUserData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -166,15 +166,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/LoginViewController.swift"
-            timestampString = "464424957.301504"
+            timestampString = "464492936.420925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -182,46 +182,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MainMuse/LoginViewController.swift"
-            timestampString = "464424957.301504"
+            timestampString = "464492936.420925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "verifyUserAndSegue(_:name:email:accessToken:)"
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MainMuse.LoginViewController.(verifyUserAndSegue (MainMuse.LoginViewController) -&gt; (Swift.String, name : Swift.String, email : Swift.String, accessToken : Swift.String) -&gt; ()).(closure #1)"
                   moduleName = "MainMuse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michaelx/Documents/iOSdev/MainMuse/MainMuse/LoginViewController.swift"
-                  timestampString = "464424958.33451"
+                  timestampString = "464493112.069906"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
                   offsetFromSymbolStart = "1632">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MainMuse.LoginViewController.(verifyUserAndSegue (MainMuse.LoginViewController) -&gt; (Swift.String, name : Swift.String, email : Swift.String, accessToken : Swift.String) -&gt; ()).(closure #1).(closure #1)"
                   moduleName = "MainMuse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michaelx/Documents/iOSdev/MainMuse/MainMuse/LoginViewController.swift"
-                  timestampString = "464424958.334802"
+                  timestampString = "464493112.07021"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "135"
-                  endingLineNumber = "135"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>

@@ -787,7 +787,7 @@
                     <tabBarItem key="tabBarItem" systemItem="more" id="m7a-oJ-Zqo"/>
                     <connections>
                         <outlet property="nameLabel" destination="Zsd-56-IGG" id="IRu-Vh-Nvs"/>
-                        <segue destination="NfQ-yZ-K3j" kind="presentation" identifier="loggedOutSegue" id="uJz-GG-jGc"/>
+                        <segue destination="NfQ-yZ-K3j" kind="presentation" identifier="loggedOutSegue" animates="NO" id="uJz-GG-jGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NB-0B-jqL" userLabel="First Responder" sceneMemberID="firstResponder"/>

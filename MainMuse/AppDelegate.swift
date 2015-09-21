@@ -23,14 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dummyField.resignFirstResponder();
         dummyField.removeFromSuperview();
         
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
-//    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-////        let wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication);
-//        return wasHandled;
-//    }
-    
+
     func application(application: UIApplication,
         openURL url: NSURL,
         sourceApplication: String?,
