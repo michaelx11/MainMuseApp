@@ -18,6 +18,8 @@ class MessageListController: UIViewController, UITableViewDataSource, UITableVie
     
     var messageList : [MessageData] = [];
     
+    var isWaitingForSegue : Bool = false
+
     let localData : AppLocalData = AppLocalData.sharedInstance
     
     @IBOutlet var messageTable : UITableView!;
@@ -44,6 +46,7 @@ class MessageListController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillAppear(animated : Bool) {
         self.navigationItem.title = String(friendName);
+        isWaitingForSegue = false
         getMessages();
     }
     
@@ -120,7 +123,6 @@ class MessageListController: UIViewController, UITableViewDataSource, UITableVie
         // Need to be editable / selectable to allow font resizing, make them uneditable after
         // subjectTextView is editable to capture tap events
         bodyTextView.editable = false
-//        subjectTextView.selectable = false
         bodyTextView.selectable = false
         
         return cell
@@ -138,7 +140,12 @@ class MessageListController: UIViewController, UITableViewDataSource, UITableVie
         if indexPath.row < 0 || indexPath.row >= messageList.count {
             return false
         }
-        
+
+        if isWaitingForSegue {
+            return false
+        }
+        isWaitingForSegue = true
+
         // Set appropriate data before segue
         localData.targetUserId = friendId
         localData.editType = "edit"
