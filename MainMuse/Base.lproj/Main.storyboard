@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NfQ-yZ-K3j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NfQ-yZ-K3j">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -94,7 +94,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <segue destination="f67-H2-Fcr" kind="show" identifier="readSegue" id="JQp-Ff-VEs"/>
+                                                        <segue destination="nxM-bx-c62" kind="show" identifier="readSegue" id="JrU-de-Je0"/>
                                                     </connections>
                                                 </button>
                                                 <progressView opaque="NO" tag="3" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Eti-mH-ygh">
@@ -195,7 +195,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <segue destination="8UL-bJ-9Pa" kind="show" identifier="writeSegue" id="LiM-xs-Shb"/>
+                                                        <segue destination="Os8-VJ-18S" kind="show" identifier="writeSegue" id="yCO-f4-8JX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -396,7 +396,7 @@
                             </constraint>
                             <constraint firstItem="ygL-Yj-2yg" firstAttribute="leading" secondItem="gdH-nX-bux" secondAttribute="leading" id="LiE-6V-5BI"/>
                             <constraint firstItem="ygL-Yj-2yg" firstAttribute="top" secondItem="ii2-zu-UyZ" secondAttribute="bottom" constant="44" id="ezo-wn-tGd">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-64"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="ygL-Yj-2yg" secondAttribute="trailing" id="rze-7m-NJ0"/>
                         </constraints>
@@ -763,11 +763,11 @@
                                 <exclude reference="Zsd-56-IGG"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Mn7-tP-pXz"/>
                                 <exclude reference="F2z-lD-V1V"/>
                                 <exclude reference="T1I-Xd-oZo"/>
                                 <exclude reference="qSb-CS-yp2"/>
                                 <exclude reference="ty1-Uh-x77"/>
-                                <exclude reference="Mn7-tP-pXz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -776,11 +776,11 @@
                                 <include reference="Zsd-56-IGG"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Mn7-tP-pXz"/>
                                 <include reference="F2z-lD-V1V"/>
                                 <include reference="T1I-Xd-oZo"/>
                                 <include reference="qSb-CS-yp2"/>
                                 <include reference="ty1-Uh-x77"/>
-                                <include reference="Mn7-tP-pXz"/>
                             </mask>
                         </variation>
                     </view>
@@ -1386,48 +1386,6 @@
             </objects>
             <point key="canvasLocation" x="1384.5" y="285"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="nB5-8y-KzV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8UL-bJ-9Pa" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GMR-by-iV6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="efq-qL-O46">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="Os8-VJ-18S" kind="relationship" relationship="rootViewController" id="BjB-RE-KN8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mCv-2S-KQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="510" y="-1039.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="q6z-Hp-4V6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f67-H2-Fcr" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="05d-KA-jDV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hnS-gK-YaG">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="nxM-bx-c62" kind="relationship" relationship="rootViewController" id="36G-9N-ZUM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nJh-xi-A1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2220" y="-426.75"/>
-        </scene>
         <!--Editor Navigation Controller-->
         <scene sceneID="VfZ-Hs-69X">
             <objects>
@@ -1523,6 +1481,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="e6C-5d-el8" id="xc2-1J-JvA"/>
                                     <outlet property="delegate" destination="e6C-5d-el8" id="lfD-KX-YYd"/>
@@ -1572,7 +1533,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="JrU-de-Je0"/>
         <segue reference="L2f-gi-bnD"/>
-        <segue reference="2vR-et-AxW"/>
     </inferredMetricsTieBreakers>
 </document>

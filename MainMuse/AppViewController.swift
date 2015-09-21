@@ -171,8 +171,7 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
         if (sender is FriendButton) {
             let uiButton : FriendButton = sender as! FriendButton;
             if (segue.identifier == "readSegue") {
-                let navController : UINavigationController = segue.destinationViewController as! UINavigationController;
-                let readerViewController : ReaderViewController = navController.topViewController as! ReaderViewController;
+                let readerViewController : ReaderViewController = segue.destinationViewController as! ReaderViewController;
                 readerViewController.friendId = uiButton.friendId;
                 readerViewController.friendName = uiButton.friendName;
                 readerViewController.myToken = uiButton.myToken;
@@ -180,8 +179,7 @@ class AppViewController: UIViewController, UITableViewDataSource, UITableViewDel
             }
             
             if (segue.identifier == "writeSegue") {
-                let navController : UINavigationController = segue.destinationViewController as! UINavigationController;
-                let messageListController : MessageListController = navController.topViewController as! MessageListController;
+                let messageListController : MessageListController = segue.destinationViewController as! MessageListController;
                 messageListController.friendId = uiButton.friendId;
                 messageListController.friendName = uiButton.friendName;
                 messageListController.myToken = uiButton.myToken;
